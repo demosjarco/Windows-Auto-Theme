@@ -9,6 +9,7 @@ module.exports.MainPopup = class {
 			{ label: 'Item3', type: 'radio', checked: true },
 			{ label: 'Item4', type: 'radio' }
 		]);
+		this.tray.setToolTip('This is my application.');
 		this.tray.setContextMenu(contextMenu);
 	}
 }
