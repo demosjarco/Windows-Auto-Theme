@@ -4,7 +4,12 @@
 	"description": "",
 	"main": "main.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"start": "electron .",
+		"dev": "electronmon .",
+		"less": "less-watch-compiler css css",
+		"pack:osx": "electron-packager . --out=builds/packaged --ignore='^/builds' --platform=darwin --arch=x64 --asar --overwrite",
+		"pack:win": "electron-packager . --out=builds/packaged --ignore='^/builds' --platform=win32 --arch=ia32,x64 --asar --overwrite",
+		"inst:win": "node winstaller.js"
 	},
 	"repository": {
 		"type": "git",
