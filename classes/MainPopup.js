@@ -1,13 +1,32 @@
-const { Menu, Tray } = require('electron');
+const { app, Menu, Tray } = require('electron');
 
 module.exports.MainPopup = class {
 	constructor() {
 		this.tray = new Tray('./images/logo/icon.png');
 		this.contextMenu = Menu.buildFromTemplate([
-			{ label: 'Item1', type: 'radio' },
-			{ label: 'Item2', type: 'radio' },
-			{ label: 'Item3', type: 'radio', checked: true },
-			{ label: 'Item4', type: 'radio' }
+			{
+				label: 'Location',
+				submenu: [
+					{
+						label: 'IP Address',
+						type: 'radio',
+						click: () => {
+						}
+					},
+					{
+						label: 'Geolocation',
+						type: 'radio',
+						click: () => {
+						}
+					}
+				]
+			},
+			{
+				label: 'Quit',
+				click: () => {
+					app.quit();
+				}
+			}
 		]);
 		this.tray.setToolTip('This is my application.');
 		this.tray.setContextMenu(this.contextMenu);
