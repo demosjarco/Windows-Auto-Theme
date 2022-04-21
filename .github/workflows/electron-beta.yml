@@ -29,7 +29,6 @@ jobs:
         run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-x64' -DestinationPath '.\windows-auto-theme-x64.zip' -CompressionLevel Optimal
         shell: powershell
       - run: npm run inst:win
-      - run: tree .\builds
       - name: Upload to Releases
         uses: softprops/action-gh-release@v1
         with:
