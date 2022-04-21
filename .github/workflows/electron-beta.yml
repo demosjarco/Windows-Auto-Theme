@@ -36,7 +36,8 @@ jobs:
           prerelease: true
           generate_release_notes: true
           files: |
-            builds/installers/*
+            builds/installers/*.exe
+            builds/installers/*.msi
             windows-auto-theme-win-x32.zip
             windows-auto-theme-win-x64.zip
         env:
