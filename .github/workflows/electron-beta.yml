@@ -42,9 +42,11 @@ jobs:
         run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-x64' -DestinationPath '.\windows-auto-theme-x64.zip' -CompressionLevel Optimal
         shell: powershell
       - run: npm run inst:win
-      - run: npm version ${{ github.event.inputs.increment }}
+      - name: Increment version (from dropdown)
+        run: npm version ${{ github.event.inputs.increment }}
         if: ${{ github.event.inputs.increment != '' }}
-      - run: npm version prepatch
+      - name: Increment version
+        run: npm version prepatch
         if: ${{ github.event.inputs.increment == '' }}
       # - run: git push --tags
       # - name: GitHub Actions Create Tag
