@@ -22,5 +22,6 @@ jobs:
       - name: Delete dev files
         run: |
           rm -fv css/*.less
+        shell: bash
       - run: npm run pack:win
       - name: Compress package x32
