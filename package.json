@@ -27,12 +27,12 @@
 		"jquery": "^3.6.0"
 	},
 	"devDependencies": {
-		"electron": "^18.0.1",
+		"electron": "^18.1.0",
 		"electronmon": "^2.0.2",
 		"less-watch-compiler": "^1.16.3"
 	},
 	"optionalDependencies": {
-		"electron-packager": "^15.4.0",
+		"electron-packager": "^15.5.1",
 		"electron-winstaller": "^5.0.0"
 	}
 }
