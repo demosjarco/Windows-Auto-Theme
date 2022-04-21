@@ -41,7 +41,10 @@ jobs:
       - name: Compress package x64
         run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-x64' -DestinationPath '.\windows-auto-theme-x64.zip' -CompressionLevel Optimal
         shell: powershell
-      - run: npm run inst:win
+      - name: Create installer x32
+        run: npm run inst:win ia32
+      - name: Create installer x64
+        run: npm run inst:win x64
       - name: Increment version (from dropdown)
         run: npm version -f ${{ github.event.inputs.increment }}
         if: ${{ github.event.inputs.increment != '' }}
