@@ -48,6 +48,8 @@ jobs:
       - name: Increment version
         run: npm version prepatch
         if: ${{ github.event.inputs.increment == '' }}
+      - run: cat package.json
+        shell: bash
       # - run: git push --tags
       # - name: GitHub Actions Create Tag
       #   id: tag_version
