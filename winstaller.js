@@ -6,8 +6,8 @@ require('electron-winstaller').createWindowsInstaller({
 	exe: 'Windows Auto Theme.exe',
 	// iconUrl: 'images/logo/icon.ico',
 	setupExe: 'windows-auto-theme-installer.exe',
-	setupMsi: 'windows-auto-theme-installer.msi',
-	noMsi: false
+	// setupMsi: 'windows-auto-theme-installer-x64.msi',
+	noMsi: true
 }).then(() => {
 	console.log('Installer created');
 }, (error) => {
