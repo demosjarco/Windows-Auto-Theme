@@ -21,3 +21,4 @@ jobs:
         run: |
           rm -fv css/*.less
         shell: bash
+      - run: npm run pack:win
