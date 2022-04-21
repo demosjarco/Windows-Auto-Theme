@@ -1,7 +1,7 @@
 {
 	"name": "windows-auto-theme",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Change windows theme based on location daylight or time",
 	"main": "main.js",
 	"scripts": {
 		"reset-deps": "npm un dotenv jquery electron electronmon less-watch-compiler electron-packager electron-winstaller && npm i dotenv jquery && npm i -D electron electronmon less-watch-compiler && npm i -O electron-packager electron-winstaller",
@@ -20,18 +20,5 @@
 	"bugs": {
 		"url": "https://github.com/demosjarco/Windows-Auto-Theme/issues"
 	},
-	"homepage": "https://github.com/demosjarco/Windows-Auto-Theme#readme",
-	"dependencies": {
-		"dotenv": "^16.0.0",
-		"jquery": "^3.6.0"
-	},
-	"devDependencies": {
-		"electron": "^18.1.0",
-		"electronmon": "^2.0.2",
-		"less-watch-compiler": "^1.16.3"
-	},
-	"optionalDependencies": {
-		"electron-packager": "^15.5.1",
-		"electron-winstaller": "^5.0.0"
-	}
+	"homepage": "https://github.com/demosjarco/Windows-Auto-Theme#readme"
 }
