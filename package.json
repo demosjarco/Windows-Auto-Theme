@@ -20,5 +20,18 @@
 	"bugs": {
 		"url": "https://github.com/demosjarco/Windows-Auto-Theme/issues"
 	},
-	"homepage": "https://github.com/demosjarco/Windows-Auto-Theme#readme"
+	"homepage": "https://github.com/demosjarco/Windows-Auto-Theme#readme",
+	"dependencies": {
+		"dotenv": "^16.0.0",
+		"jquery": "^3.6.0"
+	},
+	"devDependencies": {
+		"electron": "^18.1.0",
+		"electronmon": "^2.0.2",
+		"less-watch-compiler": "^1.16.3"
+	},
+	"optionalDependencies": {
+		"electron-packager": "^15.5.1",
+		"electron-winstaller": "^5.0.0"
+	}
 }
