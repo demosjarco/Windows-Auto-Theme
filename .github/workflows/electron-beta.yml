@@ -57,10 +57,10 @@ jobs:
       #     pre_release_branches: "/^((?!master|main).)*$/"
       #     dry_run: true
       - name: Increment version (from dropdown)
-        run: npm version --sign-git-tag=true -f ${{ github.event.inputs.increment }}
+        run: npm version --sign-git-tag=true --preid="beta" -f ${{ github.event.inputs.increment }}
         if: ${{ github.event.inputs.increment != '' }}
       - name: Increment version
-        run: npm version --sign-git-tag=true -f prepatch
+        run: npm version --sign-git-tag=true --preid="beta" -f prepatch
         if: ${{ github.event.inputs.increment == '' }}
       # - run: git push --tags
 
