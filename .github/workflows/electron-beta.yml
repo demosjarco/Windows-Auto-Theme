@@ -45,6 +45,17 @@ jobs:
         run: npm run inst:win ia32
       - name: Create installer x64
         run: npm run inst:win x64
+      - name: Setup Git
+        run: |
+          git config user.name "DemosJarco"
+          git config user.email "1209494+demosjarco@users.noreply.github.com"
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_tag_gpgsign: true
       - name: Increment version (from dropdown)
         run: npm version -f ${{ github.event.inputs.increment }}
         if: ${{ github.event.inputs.increment != '' }}
