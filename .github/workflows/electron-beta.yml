@@ -22,9 +22,9 @@ jobs:
           rm -fv css/*.less
         shell: bash
       - run: npm run pack:win
-      - name: Compress package x32
-        run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-ia32' -DestinationPath '.\windows-auto-theme-win-x32.zip' -CompressionLevel Optimal
-        shell: powershell
+      # - name: Compress package x32
+      #   run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-ia32' -DestinationPath '.\windows-auto-theme-win-x32.zip' -CompressionLevel Optimal
+      #   shell: powershell
       - name: Compress package x64
         run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-x64' -DestinationPath '.\windows-auto-theme-win-x64.zip' -CompressionLevel Optimal
         shell: powershell
