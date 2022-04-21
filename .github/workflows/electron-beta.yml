@@ -22,6 +22,7 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
+      # Setup env
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.1.1
         with:
@@ -34,17 +35,8 @@ jobs:
         run: |
           rm -fv css/*.less
         shell: bash
-      - run: npm run pack:win
-      - name: Compress package x32
-        run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-ia32' -DestinationPath '.\windows-auto-theme-x32.zip' -CompressionLevel Optimal
-        shell: powershell
-      - name: Compress package x64
-        run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-x64' -DestinationPath '.\windows-auto-theme-x64.zip' -CompressionLevel Optimal
-        shell: powershell
-      - name: Create installer x32
-        run: npm run inst:win ia32
-      - name: Create installer x64
-        run: npm run inst:win x64
+
+      # Setup version management
       - name: Setup Git
         run: |
           git config user.name "DemosJarco"
@@ -56,15 +48,6 @@ jobs:
           git_user_signingkey: true
           git_commit_gpgsign: true
           git_tag_gpgsign: true
-      - name: Increment version (from dropdown)
-        run: npm version -f ${{ github.event.inputs.increment }}
-        if: ${{ github.event.inputs.increment != '' }}
-      - name: Increment version
-        run: npm version -f prepatch
-        if: ${{ github.event.inputs.increment == '' }}
-      - run: cat package.json
-        shell: bash
-      # - run: git push --tags
       # - name: GitHub Actions Create Tag
       #   id: tag_version
       #   uses: mathieudutour/github-tag-action@v6.0
@@ -73,6 +56,28 @@ jobs:
       #     default_bump: "patch"
       #     pre_release_branches: "/^((?!master|main).)*$/"
       #     dry_run: true
+      - name: Increment version (from dropdown)
+        run: npm version -f ${{ github.event.inputs.increment }}
+        if: ${{ github.event.inputs.increment != '' }}
+      - name: Increment version
+        run: npm version -f prepatch
+        if: ${{ github.event.inputs.increment == '' }}
+      # - run: git push --tags
+
+      # Build
+      - run: npm run pack:win
+      - name: Compress package x32
+        run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-ia32' -DestinationPath '.\windows-auto-theme-x32.zip' -CompressionLevel Optimal
+        shell: powershell
+      - name: Compress package x64
+        run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-x64' -DestinationPath '.\windows-auto-theme-x64.zip' -CompressionLevel Optimal
+        shell: powershell
+      - name: Create installer x32
+        run: npm run inst:win ia32
+      - name: Create installer x64
+        run: npm run inst:win x64
+
+      # Upload Releases
       # - name: Upload to Releases
       #   uses: softprops/action-gh-release@v1
       #   with:
