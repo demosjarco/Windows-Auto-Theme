@@ -8,7 +8,7 @@
 		"start": "electron .",
 		"dev": "electronmon .",
 		"less": "less-watch-compiler css css",
-		"pack:win": "electron-packager . --out=builds/packaged --ignore='^/builds' --platform=win32 --arch=x64 --asar --overwrite",
+		"pack:win": "electron-packager . --icon=images/logo/icon.ico --out=builds/packaged --ignore='^/builds' --platform=win32 --arch=x64 --asar --overwrite",
 		"inst:win": "node winstaller.js"
 	},
 	"repository": {
