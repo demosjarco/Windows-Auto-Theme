@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "main.js",
 	"scripts": {
+		"reset-deps": "npm un dotenv jquery electron electronmon less-watch-compiler electron-packager electron-winstaller && npm i dotenv jquery && npm i -D electron electronmon less-watch-compiler && npm i -O electron-packager electron-winstaller",
 		"start": "electron .",
 		"dev": "electronmon .",
 		"less": "less-watch-compiler css css",
