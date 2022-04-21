@@ -10,15 +10,12 @@ on:
       increment:
         description: 'Increment type'
         required: true
-        default: 'prepatch'
+        default: 'patch'
         type: choice
         options:
           - "major"
           - "minor"
           - "patch"
-          - "premajor"
-          - "preminor"
-          - "prepatch"
 
 jobs:
   build:

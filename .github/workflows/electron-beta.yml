@@ -11,9 +11,6 @@ on:
         default: 'prepatch'
         type: choice
         options:
-          - "major"
-          - "minor"
-          - "patch"
           - "premajor"
           - "preminor"
           - "prepatch"
