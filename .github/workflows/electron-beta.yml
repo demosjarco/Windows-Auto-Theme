@@ -43,10 +43,10 @@ jobs:
         shell: powershell
       - run: npm run inst:win
       - name: Increment version (from dropdown)
-        run: npm version ${{ github.event.inputs.increment }}
+        run: npm version -f ${{ github.event.inputs.increment }}
         if: ${{ github.event.inputs.increment != '' }}
       - name: Increment version
-        run: npm version prepatch
+        run: npm version -f prepatch
         if: ${{ github.event.inputs.increment == '' }}
       - run: cat package.json
         shell: bash
