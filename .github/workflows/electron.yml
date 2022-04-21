@@ -37,8 +37,10 @@ jobs:
           prerelease: false
           generate_release_notes: true
           files: |
-            builds/installers/*.exe
-            builds/installers/*.msi
+            builds/installers/windows-auto-theme-installer-x32.exe
+            builds/installers/windows-auto-theme-installer-x64.exe
+            builds/installers/windows-auto-theme-installer-x32.msi
+            builds/installers/windows-auto-theme-installer-x64.msi
             windows-auto-theme-x32.zip
             windows-auto-theme-x64.zip
         env:
