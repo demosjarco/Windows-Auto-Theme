@@ -1,5 +1,6 @@
 {
 	"name": "windows-auto-theme",
+	"productName": "windows-auto-theme",
 	"version": "1.0.0",
 	"description": "Change windows theme based on location daylight or time",
 	"main": "main.js",
