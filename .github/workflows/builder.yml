@@ -88,4 +88,17 @@ jobs:
       - run: npm run pack:win -- --arch=${{ matrix.arch }}
       - run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-${{ matrix.arch }}' -DestinationPath '.\windows-auto-theme-${{ matrix.arch }}.zip' -CompressionLevel Optimal
         shell: powershell
-      - run: npm run inst:win ${{ matrix.arch }} ${{ matrix.type }}
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [ia32, x64]
+        type: [exe]
+    steps:
+      # Setup env
+      - uses: actions/checkout@v3
+
+      # Upload Releases
+      - name: Upload to Releases
