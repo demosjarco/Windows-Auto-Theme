@@ -54,6 +54,7 @@ jobs:
           git_tag_gpgsign: true
       - name: Increment version (from dropdown)
         run: npm version --sign-git-tag=true -f ${{ github.event.inputs.increment }}
+      - run: git push --tags
 
       # Build
       - run: npm run pack:win
