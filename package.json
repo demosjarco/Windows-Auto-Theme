@@ -5,8 +5,8 @@
 	"main": "main.js",
 	"scripts": {
 		"reset-deps": "npm un dotenv jquery electron electronmon eslint eslint-config-prettier eslint-plugin-json eslint-plugin-yml less-watch-compiler prettier electron-packager electron-winstaller && npm i dotenv jquery && npm i -D electron electronmon eslint eslint-config-prettier eslint-plugin-json eslint-plugin-yml less-watch-compiler prettier && npm i -O electron-packager electron-winstaller",
-		"less:fix": "less-watch-compiler --run-once css css",
 		"less": "less-watch-compiler",
+		"less:fix": "less-watch-compiler --run-once",
 		"lint": "eslint --ext .js,.jsx,.json,.yml .",
 		"lint:fix": "eslint --ext .js,.jsx,.json,.yml . --fix",
 		"prettier": "prettier --check **/*.{js,css,json,md}",
