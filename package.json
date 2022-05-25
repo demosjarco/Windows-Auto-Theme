@@ -5,6 +5,7 @@
 	"main": "main.js",
 	"scripts": {
 		"reset-deps": "npm un dotenv jquery electron electronmon eslint eslint-config-prettier eslint-plugin-json eslint-plugin-yml less-watch-compiler prettier electron-packager electron-winstaller && npm i dotenv jquery && npm i -D electron electronmon eslint eslint-config-prettier eslint-plugin-json eslint-plugin-yml less-watch-compiler prettier && npm i -O electron-packager electron-winstaller",
+		"less": "less-watch-compiler css css",
 		"lint": "eslint --ext .js,.jsx,.json,.yml .",
 		"lint:fix": "eslint --ext .js,.jsx,.json,.yml . --fix",
 		"prettier": "prettier --check **/*.{js,css,json,md}",
@@ -15,7 +16,6 @@
 		"start": "electron .",
 		"dev": "electronmon .",
 		"test": "echo \"Error: no test specified\" && exit 0",
-		"less": "less-watch-compiler css css",
 		"pack:win": "electron-packager . --icon=images/logo/icon.ico --out=builds/packaged --ignore='^/builds' --platform=win32 --arch=ia32,x64 --asar --overwrite",
 		"inst:win": "node winstaller.js"
 	},
