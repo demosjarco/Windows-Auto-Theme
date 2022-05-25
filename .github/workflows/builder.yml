@@ -15,7 +15,7 @@ jobs:
   test:
     runs-on: windows-latest
     env:
-      NODE_ENV: ${{ (contains(github.head_ref, 'pre') || contains(github.ref_name, 'pre') && 'development' || 'production') }}
+      NODE_ENV: ${{ (contains(github.head_ref, 'pre') || contains(github.ref_name, 'pre')) && 'development' || 'production' }}
     steps:
       - run: echo ${{ env.NODE_ENV }}
       # Setup env
@@ -63,7 +63,7 @@ jobs:
         arch: [ia32, x64]
         type: [exe]
     env:
-      NODE_ENV: ${{ (contains(github.head_ref, 'pre') || contains(github.ref_name, 'pre') && 'development' || 'production') }}
+      NODE_ENV: ${{ (contains(github.head_ref, 'pre') || contains(github.ref_name, 'pre')) && 'development' || 'production' }}
     steps:
       # Setup env
       - uses: actions/checkout@v3
