@@ -10,9 +10,9 @@ require('electron-winstaller')
 		exe: 'windows-auto-theme.exe',
 		iconUrl: 'https://raw.githubusercontent.com/demosjarco/Windows-Auto-Theme/main/images/logo/icon.ico',
 		setupIcon: 'images/logo/icon.ico',
-		setupExe: `windows-auto-theme-installer-${argv[2]}.exe`,
-		// setupMsi: `windows-auto-theme-installer-${argv[2]}.msi`,
-		noMsi: true,
+		setupExe: argv[3] == 'exe' ? `windows-auto-theme-installer-${argv[2]}.exe` : null,
+		setupMsi: argv[3] == 'msi' ? `windows-auto-theme-installer-${argv[2]}.msi` : null,
+		noMsi: argv[3] == 'msi',
 	})
 	.then(
 		() => {
