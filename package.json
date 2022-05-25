@@ -12,6 +12,7 @@
 		"build": "npm ci --fund=false",
 		"start": "electron .",
 		"dev": "electronmon .",
+		"test": "echo \"Error: no test specified\" && exit 0",
 		"less": "less-watch-compiler css css",
 		"pack:win": "electron-packager . --icon=images/logo/icon.ico --out=builds/packaged --ignore='^/builds' --platform=win32 --arch=ia32,x64 --asar --overwrite",
 		"inst:win": "node winstaller.js"
