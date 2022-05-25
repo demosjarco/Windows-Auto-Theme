@@ -18,7 +18,6 @@ jobs:
       NODE_ENV: ${{ (contains(github.head_ref, 'pre') || contains(github.ref_name, 'pre') && 'development' || 'production') }}
     steps:
       - run: echo ${{ env.NODE_ENV }}
-      - run: echo "$NODE_ENV"
       # Setup env
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
