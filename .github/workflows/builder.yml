@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: lts/*
           cache: 'npm'
-      - run: npm install-ci-test --include=dev --fund=false
+      - run: npm cit --include=dev --fund=false
 
   version:
     needs: test
