@@ -79,6 +79,14 @@ jobs:
       - name: Generate ${{ matrix.type }} for ${{ matrix.arch }} installer
       - run: npm run inst:win ${{ matrix.arch }} ${{ matrix.type }}
 
+      # Upload Artifact
+      - uses: actions/upload-artifact@v3
+        with:
+          path: |
+            builds/installers/windows-auto-theme-installer-${{ matrix.arch }}.${{ matrix.type }}
+            windows-auto-theme-${{ matrix.arch }}.zip
+          if-no-files-found: error
+
   publish:
     needs: build
     runs-on: ubuntu-latest
