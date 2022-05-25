@@ -84,6 +84,6 @@ jobs:
 
       # Build
       - run: npm run pack:win -- --arch=${{ matrix.arch }}
-      - run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-ia32' -DestinationPath '.\windows-auto-theme-x32.zip' -CompressionLevel Optimal
+      - run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-${{ matrix.arch }}' -DestinationPath '.\windows-auto-theme-${{ matrix.arch }}.zip' -CompressionLevel Optimal
         shell: powershell
       - run: npm run inst:win ${{ matrix.arch }} ${{ matrix.type }}
