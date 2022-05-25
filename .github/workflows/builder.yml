@@ -24,10 +24,6 @@ jobs:
         with:
           node-version: lts/*
           cache: 'npm'
-
-      # Code QOL
-      - run: npm run format:fix
-
       - run: npm install-ci-test --fund=false
 
   version:
@@ -70,9 +66,6 @@ jobs:
         with:
           node-version: lts/*
           cache: 'npm'
-
-      # Code QOL
-      - run: npm run format:fix
       - run: npm ci --fund=false
 
       # Cleanup
