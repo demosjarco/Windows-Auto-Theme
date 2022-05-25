@@ -24,9 +24,9 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-      - run: npm ci
           node-version: lts/*
           cache: 'npm'
+      - run: npm run build
       - name: Uninstall unneeded dependencies
         run: npm un electronmon less-watch-compiler
       - name: Delete dev files
