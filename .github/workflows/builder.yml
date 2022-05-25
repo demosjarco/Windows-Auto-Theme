@@ -34,10 +34,10 @@ jobs:
 
       # Cleanup
       - name: Uninstall unneeded dependencies
-        run: npm un electronmon less-watch-compiler
+        run: npm un electronmon eslint eslint-config-prettier eslint-plugin-json eslint-plugin-yml less-watch-compiler prettier
       - name: Delete dev files
         run: |
-          rm -fv css/*.less
+          rm -fv css/*.less .eslintrc.json .prettierrc.json less-watch-compiler.config.json
         shell: bash
 
       # Setup version management
