@@ -10,25 +10,23 @@ module.exports.MainPopup = class {
 					{
 						label: 'IP Address',
 						type: 'radio',
-						click: () => {
-						}
+						click: () => {},
 					},
 					{
 						label: 'Geolocation',
 						type: 'radio',
-						click: () => {
-						}
-					}
-				]
+						click: () => {},
+					},
+				],
 			},
 			{
 				label: 'Quit',
 				click: () => {
 					app.quit();
-				}
-			}
+				},
+			},
 		]);
 		this.tray.setToolTip('This is my application.');
 		this.tray.setContextMenu(this.contextMenu);
 	}
-}
+};
