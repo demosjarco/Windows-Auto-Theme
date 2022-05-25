@@ -4,6 +4,7 @@ const { argv } = require('process');
 
 require('electron-winstaller')
 	.createWindowsInstaller({
+		name: 'windowsautotheme',
 		appDirectory: `builds/packaged/windows-auto-theme-win32-${argv[2]}`,
 		outputDirectory: 'builds/installers',
 		exe: 'windows-auto-theme.exe',
