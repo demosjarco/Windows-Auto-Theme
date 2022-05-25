@@ -77,7 +77,7 @@ jobs:
         run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-${{ matrix.arch }}' -DestinationPath '.\windows-auto-theme-${{ matrix.arch }}.zip' -CompressionLevel Optimal
         shell: powershell
       - name: Generate ${{ matrix.type }} for ${{ matrix.arch }} installer
-      - run: npm run inst:win ${{ matrix.arch }} ${{ matrix.type }}
+        run: npm run inst:win ${{ matrix.arch }} ${{ matrix.type }}
 
       # Upload Artifact
       - uses: actions/upload-artifact@v3
