@@ -4,7 +4,12 @@
 	"description": "Change windows theme based on location daylight or time",
 	"main": "main.js",
 	"scripts": {
-		"reset-deps": "npm un dotenv jquery electron electronmon less-watch-compiler electron-packager electron-winstaller && npm i dotenv jquery && npm i -D electron electronmon less-watch-compiler && npm i -O electron-packager electron-winstaller",
+		"reset-deps": "npm un dotenv jquery electron electronmon less-watch-compiler prettier electron-packager electron-winstaller && npm i dotenv jquery && npm i -D electron electronmon less-watch-compiler prettier && npm i -O electron-packager electron-winstaller",
+		"prettier": "prettier --check **/*.{js,css,json,md}",
+		"prettier:fix": "prettier --write **/*.{js,css,json,md}",
+		"format": "npm run prettier",
+		"format:fix": "npm run prettier:fix",
+		"build": "npm ci --fund=false",
 		"start": "electron .",
 		"dev": "electronmon .",
 		"less": "less-watch-compiler css css",
@@ -28,7 +33,8 @@
 	"devDependencies": {
 		"electron": "^19.0.1",
 		"electronmon": "^2.0.2",
-		"less-watch-compiler": "^1.16.3"
+		"less-watch-compiler": "^1.16.3",
+		"prettier": "^2.6.2"
 	},
 	"optionalDependencies": {
 		"electron-packager": "^15.5.1",
