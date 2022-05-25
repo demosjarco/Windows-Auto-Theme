@@ -76,6 +76,8 @@ jobs:
           rm -fv css/*.less .eslintrc.json .prettierrc.json less-watch-compiler.config.json
         shell: bash
 
+      - run: npm ls
+
       # Build
       - run: npm run pack:win -- --arch=${{ matrix.arch }}
       - run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-${{ matrix.arch }}' -DestinationPath '.\windows-auto-theme-${{ matrix.arch }}.zip' -CompressionLevel Optimal
