@@ -71,8 +71,6 @@ jobs:
           rm -fv css/*.less .eslintrc.json .prettierrc.json less-watch-compiler.config.json
         shell: bash
 
-      - run: npm ls
-
       # Build
       - run: npm run pack:win -- --arch=${{ matrix.arch }}
       - name: Generate compressed ${{ matrix.arch }}
