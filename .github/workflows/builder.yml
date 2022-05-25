@@ -26,6 +26,7 @@ jobs:
         with:
       - run: npm ci
           node-version: lts/*
+          cache: 'npm'
       - name: Uninstall unneeded dependencies
         run: npm un electronmon less-watch-compiler
       - name: Delete dev files
