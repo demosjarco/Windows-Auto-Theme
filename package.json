@@ -4,11 +4,13 @@
 	"description": "Change windows theme based on location daylight or time",
 	"main": "main.js",
 	"scripts": {
-		"reset-deps": "npm un dotenv jquery electron electronmon less-watch-compiler prettier electron-packager electron-winstaller && npm i dotenv jquery && npm i -D electron electronmon less-watch-compiler prettier && npm i -O electron-packager electron-winstaller",
+		"reset-deps": "npm un dotenv jquery electron electronmon eslint eslint-config-prettier eslint-plugin-json eslint-plugin-yml less-watch-compiler prettier electron-packager electron-winstaller && npm i dotenv jquery && npm i -D electron electronmon eslint eslint-config-prettier eslint-plugin-json eslint-plugin-yml less-watch-compiler prettier && npm i -O electron-packager electron-winstaller",
+		"lint": "eslint --ext .js,.jsx,.json,.yml .",
+		"lint:fix": "eslint --ext .js,.jsx,.json,.yml . --fix",
 		"prettier": "prettier --check **/*.{js,css,json,md}",
 		"prettier:fix": "prettier --write **/*.{js,css,json,md}",
-		"format": "npm run prettier",
-		"format:fix": "npm run prettier:fix",
+		"format": "npm run prettier && npm run lint",
+		"format:fix": "npm run prettier:fix && npm run lint:fix",
 		"build": "npm ci --fund=false",
 		"start": "electron .",
 		"dev": "electronmon .",
@@ -34,6 +36,10 @@
 	"devDependencies": {
 		"electron": "^19.0.1",
 		"electronmon": "^2.0.2",
+		"eslint": "^8.16.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-json": "^3.1.0",
+		"eslint-plugin-yml": "^1.0.0",
 		"less-watch-compiler": "^1.16.3",
 		"prettier": "^2.6.2"
 	},
