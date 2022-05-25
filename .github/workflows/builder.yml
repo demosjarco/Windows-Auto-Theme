@@ -64,11 +64,11 @@ jobs:
         run: npm run inst:win x64
 
       # Upload Releases
-      - name: Upload to Prereleases
+      - name: Upload to Releases
         uses: softprops/action-gh-release@v1
         if: ${{ github.event.inputs.increment == 'major' || github.event.inputs.increment == 'minor' || github.event.inputs.increment == 'patch' }}
         with:
-          prerelease: true
+          prerelease: false
           generate_release_notes: true
           files: |
             builds/installers/windows-auto-theme-installer-x32.exe
@@ -79,11 +79,11 @@ jobs:
             windows-auto-theme-x64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload to Releases
+      - name: Upload to Prereleases
         uses: softprops/action-gh-release@v1
         if: ${{ github.event.inputs.increment == 'premajor' || github.event.inputs.increment == 'preminor' || github.event.inputs.increment == 'prepatch' || github.event.inputs.increment == 'prerelease' }}
         with:
-          prerelease: false
+          prerelease: true
           generate_release_notes: true
           files: |
             builds/installers/windows-auto-theme-installer-x32.exe
