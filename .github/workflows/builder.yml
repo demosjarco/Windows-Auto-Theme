@@ -62,6 +62,8 @@ jobs:
       matrix:
         arch: [ia32, x64]
         type: [exe]
+    env:
+      NODE_ENV: ${{ (contains(github.head_ref, 'pre') || contains(github.ref_name, 'pre') && 'development' || 'production') }}
     steps:
       # Setup env
       - uses: actions/checkout@v3
