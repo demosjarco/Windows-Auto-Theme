@@ -60,8 +60,8 @@ jobs:
           node-version: lts/*
           cache: 'npm'
       - run: npm ci --fund=false
-      # - name: Get version from git tag
-      #   run: npm version --commit-hooks=false --git-tag-version=false from-git
+      - name: Get version from git tag
+        run: npm version --commit-hooks=false --git-tag-version=false from-git
       - run: cat package.json
 
       # Cleanup
