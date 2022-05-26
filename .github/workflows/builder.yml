@@ -102,8 +102,6 @@ jobs:
       # Download artifact to publish
       - uses: actions/download-artifact@v3
 
-      - run: tree -f --prune
-
       # Upload Releases
       # - name: Upload to Releases
       #   uses: softprops/action-gh-release@v1
