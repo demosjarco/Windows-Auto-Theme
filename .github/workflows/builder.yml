@@ -109,8 +109,6 @@ jobs:
 
       # Download artifact to publish
       - uses: actions/download-artifact@v3
-        id: download
-      - run: echo ${{ steps.download.outputs.download-path }}
 
       # Upload Releases
       # - name: Upload to Releases
