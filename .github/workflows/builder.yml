@@ -136,8 +136,7 @@ jobs:
         shell: bash
       - run: echo "${{ steps.get-changelog.outputs.changelog }}"
 
-      - run: echo "${{ github.head_ref }}"
-      - run: echo "${{ github.ref_name }}"
+      - run: env
 
       # Upload Releases
       - name: Upload to Releases
