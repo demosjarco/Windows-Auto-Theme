@@ -26,6 +26,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     outputs:
+      original-commit-sha: ${{ github.sha }}
       version-change-commit-sha: ${{ steps.version-change-commit.outputs.sha }}
     steps:
       - uses: actions/checkout@v3
