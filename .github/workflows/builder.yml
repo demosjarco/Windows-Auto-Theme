@@ -102,7 +102,7 @@ jobs:
 
       # Download artifact to publish
       - uses: actions/download-artifact@v3
-      - run: echo ${{steps.download.outputs.download-path}}
+        id: download
       - run: echo ${{ steps.download.outputs.download-path }}
 
       # Upload Releases
