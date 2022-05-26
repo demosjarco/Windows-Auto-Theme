@@ -25,6 +25,8 @@ jobs:
   version:
     needs: test
     runs-on: ubuntu-latest
+    outputs:
+      version-change-commit-sha: ${{ steps.version-change-commit.outputs.sha }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -45,6 +47,9 @@ jobs:
       - run: npm version --sign-git-tag=true ${{ github.head_ref || github.ref_name }} -m "[ci skip] build %s"
       - run: git push
       - run: git push --tags
+      - name: Get commit sha for `build`
+        run: echo "::set-output name=sha::$(git rev-parse HEAD)"
+        id: version-change-commit
 
   build:
     needs: version
@@ -56,6 +61,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          # Pass branch name to force 
+          ref: ${{ needs.version.outputs.version-change-commit-sha }}
           # Number of commits to fetch. 0 indicates all history for all branches and tags.
           fetch-depth: 0
       - uses: actions/setup-node@v3
