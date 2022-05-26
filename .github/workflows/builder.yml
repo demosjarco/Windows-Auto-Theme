@@ -59,6 +59,9 @@ jobs:
       matrix:
         arch: [ia32, x64]
         type: [exe]
+    outputs:
+      original-commit-sha: ${{ needs.version.outputs.original-commit-sha }}
+      version-change-commit-sha: ${{ needs.version.outputs.version-change-commit-sha }}
     steps:
       - uses: actions/checkout@v3
         with:
