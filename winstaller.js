@@ -2,6 +2,8 @@
 
 const { argv } = require('process');
 
+console.log(argv);
+
 require('electron-winstaller')
 	.createWindowsInstaller({
 		name: 'windowsautotheme',
@@ -16,7 +18,7 @@ require('electron-winstaller')
 	})
 	.then(
 		() => {
-			console.log(`${argv[2]} Installer created`);
+			console.log(`${argv[2]} ${argv[3]} installer created`);
 		},
 		(error) => {
 			throw error;
