@@ -22,8 +22,6 @@ switch (argv[3]) {
 		break;
 }
 
-console.log(config);
-
 require('electron-winstaller')
 	.createWindowsInstaller(config)
 	.then(
