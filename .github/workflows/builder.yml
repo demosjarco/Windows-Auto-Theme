@@ -136,6 +136,9 @@ jobs:
         shell: bash
       - run: echo "${{ steps.get-changelog.outputs.changelog }}"
 
+      - run: echo "${{ github.head_ref }}"
+      - run: echo "${{ github.ref_name }}"
+
       # Upload Releases
       - name: Upload to Releases
         uses: softprops/action-gh-release@v1
