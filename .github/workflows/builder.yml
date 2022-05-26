@@ -144,7 +144,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           body: ${{ steps.get-changelog.outputs.changelog }}
-          tag_name: 
           prerelease: ${{ (contains(github.head_ref, 'pre') || contains(github.ref_name, 'pre')) && true || false }}
           files: |
             artifact/builds/installers/windows-auto-theme-installer-${{ matrix.arch }}.${{ matrix.type }}
