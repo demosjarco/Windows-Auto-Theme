@@ -134,6 +134,7 @@ jobs:
         run: echo "::set-output name=changelog::$(git log --no-decorate $(git describe --tags --abbrev=0)..HEAD --oneline)"
         id: get-changelog
         shell: bash
+      - run: echo "${{ steps.get-changelog.outputs.changelog }}"
 
       # Upload Releases
       - name: Upload to Releases
