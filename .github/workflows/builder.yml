@@ -133,5 +133,3 @@ jobs:
           fail_on_unmatched_files: true
           target_commitish: ${{ needs.build.outputs.original-commit-sha }}
           generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
