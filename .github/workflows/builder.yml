@@ -120,13 +120,13 @@ jobs:
       - uses: actions/download-artifact@v3
 
       # Upload Releases
-      # - name: Upload to Releases
-      #   uses: softprops/action-gh-release@v1
-      #   with:
-      #     prerelease: ${{ (contains(github.head_ref, 'pre') || contains(github.ref_name, 'pre')) && true || false }}
-      #     generate_release_notes: true
-      #     files: |
-      #       artifact/builds/installers/windows-auto-theme-installer-${{ matrix.arch }}.${{ matrix.type }}
-      #       artifact/windows-auto-theme-${{ matrix.arch }}.zip
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload to Releases
+        uses: softprops/action-gh-release@v1
+        with:
+          prerelease: ${{ (contains(github.head_ref, 'pre') || contains(github.ref_name, 'pre')) && true || false }}
+          generate_release_notes: true
+          files: |
+            artifact/builds/installers/windows-auto-theme-installer-${{ matrix.arch }}.${{ matrix.type }}
+            artifact/windows-auto-theme-${{ matrix.arch }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
