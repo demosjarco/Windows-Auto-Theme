@@ -43,7 +43,6 @@ jobs:
           git_commit_gpgsign: true
           git_tag_gpgsign: true
       - run: npm version --sign-git-tag=true ${{ github.head_ref || github.ref_name }} -m "[ci skip] build %s"
-      - run: git log -p -2
       - run: git push
       - run: git push --tags
 
