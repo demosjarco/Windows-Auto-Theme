@@ -43,8 +43,9 @@ jobs:
           git_commit_gpgsign: true
           git_tag_gpgsign: true
       - run: npm version --sign-git-tag=true ${{ github.head_ref || github.ref_name }}
+      - run: git status
       - run: git diff
-      - run: cat package.json
+      - run: git log -p -2
       - name: Update version number in package.json
         run: |
           git add package.json
