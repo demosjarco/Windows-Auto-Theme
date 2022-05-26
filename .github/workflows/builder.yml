@@ -100,6 +100,17 @@ jobs:
         with:
           path: builds/installers/windows-auto-theme-installer-${{ matrix.arch }}.${{ matrix.type }}
           if-no-files-found: error
+      
+      - name: Revert on fail
+        if: ${{ failure() }}
+        run: |
+          git config user.name "DemosJarco"
+          git config user.email "1209494+demosjarco@users.noreply.github.com"
+          git push --delete origin $(git describe --tags --abbrev=0)
+          git tag -d $(git describe --tags --abbrev=0)
+          git revert --no-edit ${{ github.sha }}
+          git push
+        shell: bash
 
   publish:
     needs: build
