@@ -110,6 +110,11 @@ jobs:
         type: [exe]
     steps:
       - uses: actions/checkout@v3
+        with:
+          # Pass change commit to force git refresh
+          ref: ${{ needs.build.outputs.version-change-commit-sha }}
+          # Number of commits to fetch. 0 indicates all history for all branches and tags.
+          fetch-depth: 0
 
       # Download artifact to publish
       - uses: actions/download-artifact@v3
