@@ -125,6 +125,7 @@ jobs:
         with:
           prerelease: ${{ (contains(github.head_ref, 'pre') || contains(github.ref_name, 'pre')) && true || false }}
           fail_on_unmatched_files: true
+          target_commitish: ${{ needs.build.outputs.original-commit-sha }}
           generate_release_notes: true
           files: |
             artifact/builds/installers/windows-auto-theme-installer-${{ matrix.arch }}.${{ matrix.type }}
