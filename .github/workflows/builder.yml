@@ -46,7 +46,7 @@ jobs:
       - name: Update version number in package.json
         run: |
           git add package.json
-          git commit -am "[ci skip] updated version"
+          git commit -m "[ci skip] updated version"
           git push
       - run: git push --tags
 
