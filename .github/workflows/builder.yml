@@ -119,13 +119,16 @@ jobs:
       # Download artifact to publish
       - uses: actions/download-artifact@v3
 
-      - run: git log --no-decorate $(git describe --tags --abbrev=0)..HEAD --oneline
+      - name: Generate changelog from commit history
+        run: echo "::set-output name=changelog::$(git log --no-decorate $(git describe --tags --abbrev=0)..HEAD --oneline)"
+        id: get-changelog
         shell: bash
 
       # Upload Releases
       - name: Upload to Releases
         uses: softprops/action-gh-release@v1
         with:
+          body: ${{ steps.get-changelog.outputs.changelog }}
           prerelease: ${{ (contains(github.head_ref, 'pre') || contains(github.ref_name, 'pre')) && true || false }}
           files: |
             artifact/builds/installers/windows-auto-theme-installer-${{ matrix.arch }}.${{ matrix.type }}
