@@ -35,7 +35,7 @@
 		"jquery": "^3.6.0"
 	},
 	"devDependencies": {
-		"electron": "^19.0.1",
+		"electron": "^19.0.3",
 		"electronmon": "^2.0.2",
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.5.0",
