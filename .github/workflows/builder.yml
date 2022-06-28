@@ -11,10 +11,18 @@ on:
       - prerelease
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: windows-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v1
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -23,12 +31,19 @@ jobs:
       - run: npm cit --fund=false
 
   version:
+    permissions:
+      contents: write  # for Git to git push
     needs: test
     runs-on: ubuntu-latest
     outputs:
       original-commit-sha: ${{ github.sha }}
       version-change-commit-sha: ${{ steps.version-change-commit.outputs.sha }}
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v1
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -53,6 +68,8 @@ jobs:
         id: version-change-commit
 
   build:
+    permissions:
+      contents: write  # for Git to git push
     needs: version
     runs-on: windows-latest
     strategy:
@@ -63,6 +80,11 @@ jobs:
       original-commit-sha: ${{ needs.version.outputs.original-commit-sha }}
       version-change-commit-sha: ${{ needs.version.outputs.version-change-commit-sha }}
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v1
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
       - uses: actions/checkout@v3
         with:
           # Pass change commit to force git refresh
@@ -113,6 +135,8 @@ jobs:
         shell: bash
 
   publish:
+    permissions:
+      contents: write  # for softprops/action-gh-release to create GitHub release
     needs: build
     runs-on: ubuntu-latest
     strategy:
@@ -120,6 +144,11 @@ jobs:
         arch: [ia32, x64]
         type: [exe]
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v1
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
       - uses: actions/checkout@v3
         with:
           # Pass change commit to force git refresh
