@@ -50,6 +50,12 @@ jobs:
           # For private repositories, `publish_results` will automatically be set to `false`, regardless 
           # of the value entered here.
           publish_results: true
+      
+      # Upload the results to GitHub's code scanning dashboard.
+      - name: "Upload to code-scanning"
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
 
       # Upload the results as artifacts (optional). Commenting out will disable uploads of run results in SARIF
       # format to the repository Actions tab.
@@ -59,9 +65,3 @@ jobs:
           name: SARIF file
           path: results.sarif
           retention-days: 5
-      
-      # Upload the results to GitHub's code scanning dashboard.
-      - name: "Upload to code-scanning"
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: results.sarif
