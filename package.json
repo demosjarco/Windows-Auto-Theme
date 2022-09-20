@@ -1,0 +1,33 @@
+{
+	"name": "windows-auto-theme",
+	"productName": "Windows Auto Theme",
+	"version": "1.0.0",
+	"description": "Change windows theme based on location daylight or time",
+	"main": "main.js",
+	"scripts": {
+		"less": "less-watch-compiler",
+		"less:fix": "less-watch-compiler --run-once",
+		"lint": "eslint --ext .js,.jsx,.json,.yml .",
+		"lint:fix": "eslint --ext .js,.jsx,.json,.yml . --fix",
+		"prettier": "prettier --check **/*.{js,css,json,md}",
+		"prettier:fix": "prettier --write **/*.{js,css,json,md}",
+		"format": "npm run prettier && npm run lint",
+		"format:fix": "npm run less:fix && npm run prettier:fix && npm run lint:fix",
+		"start": "electron .",
+		"dev": "electronmon .",
+		"prepare": "npm run format:fix",
+		"test": "echo \"Error: no test specified\" && exit 0",
+		"pack:win": "electron-packager . --icon=images/logo/icon.ico --out=builds/packaged --ignore='^/builds' --platform=win32 --asar --overwrite",
+		"inst:win": "node winstaller.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/demosjarco/Windows-Auto-Theme.git"
+	},
+	"author": "demosjarco",
+	"license": "GPL-3.0-or-later",
+	"bugs": {
+		"url": "https://github.com/demosjarco/Windows-Auto-Theme/issues"
+	},
+	"homepage": "https://github.com/demosjarco/Windows-Auto-Theme#readme"
+}
