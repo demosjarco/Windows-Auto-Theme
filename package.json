@@ -29,5 +29,21 @@
 	"bugs": {
 		"url": "https://github.com/demosjarco/Windows-Auto-Theme/issues"
 	},
-	"homepage": "https://github.com/demosjarco/Windows-Auto-Theme#readme"
+	"homepage": "https://github.com/demosjarco/Windows-Auto-Theme#readme",
+	"dependencies": {
+		"dotenv": "^16.0.2",
+		"electron-store": "^8.1.0"
+	},
+	"devDependencies": {
+		"electron": "^20.1.4",
+		"electron-packager": "^16.0.0",
+		"electron-winstaller": "^5.0.0",
+		"electronmon": "^2.0.2",
+		"eslint": "^8.23.1",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-json": "^3.1.0",
+		"eslint-plugin-yml": "^1.2.0",
+		"less-watch-compiler": "^1.16.3",
+		"prettier": "^2.7.1"
+	}
 }
