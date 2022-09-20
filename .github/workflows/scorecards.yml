@@ -64,3 +64,4 @@ jobs:
         with:
           name: SARIF file
           path: results.sarif
+          if-no-files-found: error
