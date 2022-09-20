@@ -128,3 +128,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Finished product
+builds/
+
+# Extra file is already included in other css files
+css/extra.css
