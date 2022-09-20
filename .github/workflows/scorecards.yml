@@ -64,4 +64,3 @@ jobs:
         with:
           name: SARIF file
           path: results.sarif
-          retention-days: 5
