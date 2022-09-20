@@ -61,6 +61,7 @@ jobs:
       # format to the repository Actions tab.
       - name: "Upload artifact"
         uses: actions/upload-artifact@v3
+        if: failure()
         with:
           name: SARIF file
           path: results.sarif
