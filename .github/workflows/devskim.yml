@@ -37,3 +37,9 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: devskim-results.sarif
+      - name: Upload DevSkim scan results to GitHub Actions Artifacts
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          path: devskim-results.sarif
+          if-no-files-found: error
