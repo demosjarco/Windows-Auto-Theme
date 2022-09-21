@@ -18,9 +18,16 @@ jobs:
       matrix:
         python-ver: ['3.x', '3.11.0-alpha - 3.11.0']
         node-ver: [lts/*, latest]
+        vs-build-ver: ['[15.0,15.99)', '[16.0,16.99)', '[17.0,17.99)']
         # win-build-ver: [1511, 1607, 1703, 1709, 1803, 1809, 1903, 2004]
         win-ver: [1511, 1607, 1703, 1709, 1803, 2004]
         include:
+          - vs-build-ver: '[15.0,15.99)'
+            vs-ver: 2017
+          - vs-build-ver: '[16.0,16.99)'
+            vs-ver: 2019
+          - vs-build-ver: '[17.0,17.99)'
+            vs-ver: 2022
           - win-ver: 1511
             win-build-ver: 10586
             nodert-package-name: '@nodert-win10/windows.devices.geolocation'
@@ -58,8 +65,10 @@ jobs:
           check-latest: true
           cache: 'npm'
 
-      - uses: microsoft/setup-msbuild@v1.1
+      - name: Setting up MsBuild x64 with vs${{ matrix.vs-ver }}
+        uses: microsoft/setup-msbuild@v1.1
         with:
+          vs-version: ${{ matrix.vs-build-ver }}
           msbuild-architecture: x64
       - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.7
         with:
