@@ -62,11 +62,11 @@ jobs:
       - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.7
         with:
           win-build-ver: ${{ matrix.win-build-ver }}
-      - name: Build new SDK
-        shell: bash
-        run: |
-          cmake -DCMAKE_SYSTEM_VERSION=10.0.${{ matrix.win-build-ver }}.0
-          cmake --build .
+      # - name: Build new SDK
+      #   shell: bash
+      #   run: |
+      #     cmake -DCMAKE_SYSTEM_VERSION=10.0.${{ matrix.win-build-ver }}.0
+      #     cmake --build .
 
       - run: npm ci --fund=false
       - name: nodeRT Windows 10 ${{ matrix.win-ver }} (${{ matrix.win-ver }})
