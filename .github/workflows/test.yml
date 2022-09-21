@@ -40,8 +40,8 @@ jobs:
           # - win-ver: 1903
           #   win-build-ver: 18362
           #   nodert-package-name: '@nodert-win10-19h1/windows.devices.geolocation'
-          - win-build-ver: 19041
-            win-ver: 2004
+          - win-ver: 2004
+            win-build-ver: 19041
             nodert-package-name: '@nodert-win10-20h1/windows.devices.geolocation'
     steps:
       - uses: actions/checkout@v3
