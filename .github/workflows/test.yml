@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        sdk-version: [19041, 17134]
+        win-sdk-version: [19041, 17134]
     steps:
       - uses: actions/checkout@v3
 
@@ -35,18 +35,18 @@ jobs:
           msbuild-architecture: x64
       - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.7
         with:
-          sdk-version: ${{ matrix.version }}
+          win-sdk-version: ${{ matrix.win-sdk-version }}
       - name: Build new SDK
         shell: bash
         run: |
-          cmake -DCMAKE_SYSTEM_VERSION=10.0.${{ matrix.version }}.0
+          cmake -DCMAKE_SYSTEM_VERSION=10.0.${{ matrix.win-sdk-version }}.0
           cmake --build .
 
       - run: npm cit --fund=false
 
       - name: nodeRT Windows 10 19041
-        if: matrix.version == 19041
+        if: matrix.win-sdk-version == 19041
         run: npm install @nodert-win10-20h1/windows.devices.geolocation
       - name: nodeRT Windows 10 17134
-        if: matrix.version == 17134
+        if: matrix.win-sdk-version == 17134
         run: npm install @nodert-win10-rs4/windows.devices.geolocation
