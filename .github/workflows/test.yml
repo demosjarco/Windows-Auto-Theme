@@ -68,6 +68,6 @@ jobs:
           cmake -DCMAKE_SYSTEM_VERSION=10.0.${{ matrix.win-build-ver }}.0
           cmake --build .
 
-      - run: npm cit --fund=false
+      - run: npm ci --fund=false
       - name: nodeRT Windows 10 ${{ matrix.win-ver }} (${{ matrix.win-ver }})
         run: npm install ${{ matrix.nodert-package-name }}
