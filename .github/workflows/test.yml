@@ -72,5 +72,5 @@ jobs:
       #     cmake --build .
 
       - run: npm ci --fund=false
-      - name: nodeRT Windows 10 ${{ matrix.win-ver }} (${{ matrix.win-ver }})
+      - name: NodeRT Windows 10 ${{ matrix.win-ver }} (${{ matrix.win-ver }})
         run: npm install ${{ matrix.nodert-package-name }}
