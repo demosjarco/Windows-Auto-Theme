@@ -134,3 +134,6 @@ builds/
 
 # Extra file is already included in other css files
 css/extra.css
+
+# Minified css files
+css/*.min.css
