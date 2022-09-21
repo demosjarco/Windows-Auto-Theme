@@ -62,7 +62,7 @@ jobs:
           msbuild-architecture: x64
       - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.7
         with:
-          win-build-ver: ${{ matrix.win-build-ver }}
+          sdk-version: ${{ matrix.win-build-ver }}
       # - uses: lukka/get-cmake@v.3.23.2
       # - name: Build new SDK
       #   shell: bash
