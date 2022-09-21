@@ -1,0 +1,49 @@
+name: Test
+on:
+  push:
+    paths-ignore:
+      - ".vscode/**"
+  pull_request:
+    paths-ignore:
+      - ".vscode/**"
+
+jobs:
+  test:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        sdk-version: [19041, 17134]
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          check-latest: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          check-latest: true
+          cache: 'npm'
+
+      - uses: microsoft/setup-msbuild@v1.1
+        with:
+          msbuild-architecture: x64
+      - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.7
+        with:
+          sdk-version: ${{ matrix.version }}
+      - name: Build new SDK
+        shell: bash
+        run: |
+          cmake -DCMAKE_SYSTEM_VERSION=10.0.${{ matrix.version }}.0
+          cmake --build .
+
+      - run: npm cit --fund=false
+
+      - name: nodeRT Windows 10 19041
+        if: matrix.version == 19041
+        run: npm install @nodert-win10-20h1/windows.devices.geolocation
+      - name: nodeRT Windows 10 17134
+        if: matrix.version == 17134
+        run: npm install @nodert-win10-rs4/windows.devices.geolocation
