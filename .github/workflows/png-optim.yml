@@ -51,7 +51,7 @@ jobs:
       - uses: SimenB/github-actions-cpu-cores@v1
         id: cpu-cores
       - name: Optimize PNGs
-        run: oxipng -o max -r --strip safe -i 1 -t ${{ steps.cpu-cores.outputs.count }} ${{ github.workspace }}
+        run: oxipng -o max -r --strip safe -i 0 -t ${{ steps.cpu-cores.outputs.count }} ${{ github.workspace }}
       - name: Git Setup
         run: |
           git config user.email "oxipngbot@demosjarco.dev"
