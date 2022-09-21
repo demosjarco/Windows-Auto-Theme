@@ -16,7 +16,33 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        win-sdk-version: [19041, 17134]
+        # win-build-ver: [10586, 14393, 15063, 16299, 17134, 17763, 18362, 19041]
+        win-build-ver: [10586, 14393, 15063, 16299, 17134, 19041]
+        include:
+          - win-build-ver: 10586
+            win-ver: 1511
+            nodert-package-name: '@nodert-win10/windows.devices.geolocation'
+          - win-build-ver: 14393
+            win-ver: 1607
+            nodert-package-name: '@nodert-win10-au/windows.devices.geolocation'
+          - win-build-ver: 15063
+            win-ver: 1703
+            nodert-package-name: '@nodert-win10-cu/windows.devices.geolocation'
+          - win-build-ver: 16299
+            win-ver: 1709
+            nodert-package-name: '@nodert-win10-rs3/windows.devices.geolocation'
+          - win-build-ver: 17134
+            win-ver: 1803
+            nodert-package-name: '@nodert-win10-rs4/windows.devices.geolocation'
+          # - win-build-ver: 17763
+          #   win-ver: 1809
+          #   nodert-package-name: '@nodert-win10-rs5/windows.devices.geolocation'
+          # - win-build-ver: 18362
+          #   win-ver: 1903
+          #   nodert-package-name: '@nodert-win10-19h1/windows.devices.geolocation'
+          - win-build-ver: 19041
+            win-ver: 2004
+            nodert-package-name: '@nodert-win10-20h1/windows.devices.geolocation'
     steps:
       - uses: actions/checkout@v3
 
@@ -35,18 +61,13 @@ jobs:
           msbuild-architecture: x64
       - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.7
         with:
-          win-sdk-version: ${{ matrix.win-sdk-version }}
+          win-build-ver: ${{ matrix.win-build-ver }}
       - name: Build new SDK
         shell: bash
         run: |
-          cmake -DCMAKE_SYSTEM_VERSION=10.0.${{ matrix.win-sdk-version }}.0
+          cmake -DCMAKE_SYSTEM_VERSION=10.0.${{ matrix.win-build-ver }}.0
           cmake --build .
 
       - run: npm cit --fund=false
-
-      - name: nodeRT Windows 10 19041
-        if: matrix.win-sdk-version == 19041
-        run: npm install @nodert-win10-20h1/windows.devices.geolocation
-      - name: nodeRT Windows 10 17134
-        if: matrix.win-sdk-version == 17134
-        run: npm install @nodert-win10-rs4/windows.devices.geolocation
+      - name: nodeRT Windows 10 ${{ matrix.win-ver }} (${{ matrix.win-ver }})
+        run: npm install ${{ matrix.nodert-package-name }}
