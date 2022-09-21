@@ -1,0 +1,60 @@
+name: Optimize PNGs
+
+on:
+  push:
+    paths:
+      - "**.png"
+  workflow_dispatch:
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: step-security/harden-runner@v1
+        with:
+            egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+      - uses: actions/checkout@v3
+      - name: Rustup Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.rustup/settings.toml
+            ~/.rustup/toolchains/stable-*
+            ~/.rustup/update-hashes/stable-*
+          key: rs-toolchain_${{ hashFiles('~/.rustup/update-hashes/stable*') }}
+      # https://github.com/actions/cache/blob/main/examples.md#rust---cargo
+      # https://github.com/rust-lang/cargo/issues/4725
+      # https://doc.rust-lang.org/cargo/reference/environment-variables.html
+      # - name: Rust Package Cache
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: |
+      #       ~/.cargo/bin/
+      #       ~/.cargo/registry/index/
+      #       ~/.cargo/registry/cache/
+      #       ~/.cargo/git/db/
+      #       target/
+      #     key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - uses: actions-rs/toolchain@v1
+        id: sr
+        with:
+          toolchain: stable
+          default: true
+          override: true
+      - name: Install oxipng
+        uses: actions-rs/cargo@v1
+        with:
+          command: install
+          args: oxipng
+      - uses: SimenB/github-actions-cpu-cores@v1
+        id: cpu-cores
+      - name: Optimize PNGs
+        run: oxipng -o max -r --strip safe -i 1 -t ${{ steps.cpu-cores.outputs.count }} ${{ github.workspace }}
+      - name: Git Setup
+        run: |
+          git config user.email "oxipngbot@demosjarco.dev"
+          git config user.name "Oxipng Bot"
+      - run: git commit -am "Optimized PNG"
+      - run: git push
