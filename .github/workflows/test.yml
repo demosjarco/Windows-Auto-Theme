@@ -16,29 +16,29 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # win-build-ver: [10586, 14393, 15063, 16299, 17134, 17763, 18362, 19041]
-        win-build-ver: [10586, 14393, 15063, 16299, 17134, 19041]
+        # win-build-ver: [1511, 1607, 1703, 1709, 1803, 1809, 1903, 2004]
+        win-ver: [1511, 1607, 1703, 1709, 1803, 2004]
         include:
-          - win-build-ver: 10586
-            win-ver: 1511
+          - win-ver: 1511
+            win-build-ver: 10586
             nodert-package-name: '@nodert-win10/windows.devices.geolocation'
-          - win-build-ver: 14393
-            win-ver: 1607
+          - win-ver: 1607
+            win-build-ver: 14393
             nodert-package-name: '@nodert-win10-au/windows.devices.geolocation'
-          - win-build-ver: 15063
-            win-ver: 1703
+          - win-ver: 1703
+            win-build-ver: 15063
             nodert-package-name: '@nodert-win10-cu/windows.devices.geolocation'
-          - win-build-ver: 16299
-            win-ver: 1709
+          - win-ver: 1709
+            win-build-ver: 16299
             nodert-package-name: '@nodert-win10-rs3/windows.devices.geolocation'
-          - win-build-ver: 17134
-            win-ver: 1803
+          - win-ver: 1803
+            win-build-ver: 17134
             nodert-package-name: '@nodert-win10-rs4/windows.devices.geolocation'
-          # - win-build-ver: 17763
-          #   win-ver: 1809
+          # - win-ver: 1809
+          #   win-build-ver: 17763
           #   nodert-package-name: '@nodert-win10-rs5/windows.devices.geolocation'
-          # - win-build-ver: 18362
-          #   win-ver: 1903
+          # - win-ver: 1903
+          #   win-build-ver: 18362
           #   nodert-package-name: '@nodert-win10-19h1/windows.devices.geolocation'
           - win-build-ver: 19041
             win-ver: 2004
