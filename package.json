@@ -15,7 +15,7 @@
 		"format:fix": "npm run less:fix && npm run prettier:fix && npm run lint:fix",
 		"start": "electron .",
 		"dev": "electronmon .",
-		"prepare": "exit 0 && npm run format:fix",
+		"prepare": "npm run format:fix",
 		"test": "echo \"Error: no test specified\" && exit 0",
 		"pack:win": "electron-packager . --icon=images/logo/icon.ico --out=builds/packaged --ignore='^/builds' --platform=win32 --asar --overwrite",
 		"inst:win": "node winstaller.js"
