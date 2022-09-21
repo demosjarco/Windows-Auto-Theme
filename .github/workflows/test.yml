@@ -16,6 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        python-ver: ['3.x', '3.11.0-alpha - 3.11.0']
         node-ver: [lts/*, latest]
         # win-build-ver: [1511, 1607, 1703, 1709, 1803, 1809, 1903, 2004]
         win-ver: [1511, 1607, 1703, 1709, 1803, 2004]
@@ -49,7 +50,7 @@ jobs:
 
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: ${{ matrix.python-ver }}
           check-latest: true
       - uses: actions/setup-node@v3
         with:
