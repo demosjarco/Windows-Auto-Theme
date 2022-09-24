@@ -19,13 +19,13 @@ jobs:
         python-ver: ['3.x', '3.11.0-alpha - 3.11.0']
         node-ver: [lts/*, latest]
         # vs-build-ver: ['[15,16)', '[16,17)', '[17,18)']
-        vs-build-ver: ['[16.4,16.12)', '[17,18)']
+        vs-build-ver: ['[16.11,16.12)', '[17,18)']
         # win-build-ver: [1511, 1607, 1703, 1709, 1803, 1809, 1903, 2004]
         win-ver: [2004]
         include:
           # - vs-build-ver: '[15,16)'
           #   vs-ver: 2017
-          - vs-build-ver: '[16.4,16.12)'
+          - vs-build-ver: '[16.11,16.12)'
             vs-ver: 2019
           - vs-build-ver: '[17,18)'
             vs-ver: 2022
