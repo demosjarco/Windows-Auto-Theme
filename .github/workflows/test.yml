@@ -16,7 +16,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-ver: [lts/*, latest]
+        # node-ver: [lts/*, latest]
+        node-ver: [lts/*]
         vs-build-ver: ['[15,16)', '[16,17)', '[17,18)']
         # win-target-ver: [1511, 1607, 1703, 1709, 1803, 1809, 1903, 2004]
         win-target-ver: [1703, 1709, 1803, 2004]
