@@ -70,7 +70,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1.1
         with:
           vs-version: ${{ matrix.vs-build-ver }}
-          msbuild-architecture: x64
+          # msbuild-architecture: x64
       - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.7
         with:
           sdk-version: ${{ matrix.win-build-ver }}
