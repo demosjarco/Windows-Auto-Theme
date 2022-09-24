@@ -62,6 +62,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-ver }}
           check-latest: true
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-ver }}
