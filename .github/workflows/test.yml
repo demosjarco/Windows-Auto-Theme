@@ -16,7 +16,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest]
         python-ver: ['3.x', '3.11.0-alpha - 3.11.0']
         node-ver: [lts/*, latest]
         # vs-build-ver: ['[15,16)', '[16,17)', '[17,18)']
@@ -31,6 +30,7 @@ jobs:
             os: windows-2019
             vs-ver: 2019
           - vs-build-ver: '[17,18)'
+            os: windows-latest
             vs-ver: 2022
           # - win-ver: 1511
           #   win-build-ver: 10586
