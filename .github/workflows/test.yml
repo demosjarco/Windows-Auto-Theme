@@ -22,6 +22,9 @@ jobs:
         # win-target-ver: [1511, 1607, 1703, 1709, 1803, 1809, 1903, 2004]
         win-target-ver: [2004]
         include:
+          # - vs-build-ver: '[14,15)'
+          #   win-ver: windows-2019
+          #   vs-ver: 2015
           - vs-build-ver: '[15,16)'
             win-ver: windows-2019
             vs-ver: 2017
