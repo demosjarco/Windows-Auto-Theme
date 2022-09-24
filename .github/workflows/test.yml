@@ -12,48 +12,48 @@ permissions:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.win-ver }}
     strategy:
       fail-fast: false
       matrix:
         python-ver: ['3.x', '3.11.0-alpha - 3.11.0']
         node-ver: [lts/*, latest]
         vs-build-ver: ['[15,16)', '[16,17)', '[17,18)']
-        # win-ver: [1511, 1607, 1703, 1709, 1803, 1809, 1903, 2004]
-        win-ver: [2004]
+        # win-target-ver: [1511, 1607, 1703, 1709, 1803, 1809, 1903, 2004]
+        win-target-ver: [2004]
         include:
           - vs-build-ver: '[15,16)'
-            os: windows-2019
+            win-ver: windows-2019
             vs-ver: 2017
           - vs-build-ver: '[16,17)'
-            os: windows-2019
+            win-ver: windows-2019
             vs-ver: 2019
           - vs-build-ver: '[17,18)'
-            os: windows-latest
+            win-ver: windows-latest
             vs-ver: 2022
-          # - win-ver: 1511
-          #   win-build-ver: 10586
+          # - win-target-ver: 1511
+          #   win-target-build-ver: 10586
           #   nodert-package-name: '@nodert-win10/windows.devices.geolocation'
-          # - win-ver: 1607
-          #   win-build-ver: 14393
+          # - win-target-ver: 1607
+          #   win-target-build-ver: 14393
           #   nodert-package-name: '@nodert-win10-au/windows.devices.geolocation'
-          # - win-ver: 1703
-          #   win-build-ver: 15063
+          # - win-target-ver: 1703
+          #   win-target-build-ver: 15063
           #   nodert-package-name: '@nodert-win10-cu/windows.devices.geolocation'
-          # - win-ver: 1709
-          #   win-build-ver: 16299
+          # - win-target-ver: 1709
+          #   win-target-build-ver: 16299
           #   nodert-package-name: '@nodert-win10-rs3/windows.devices.geolocation'
-          # - win-ver: 1803
-          #   win-build-ver: 17134
+          # - win-target-ver: 1803
+          #   win-target-build-ver: 17134
           #   nodert-package-name: '@nodert-win10-rs4/windows.devices.geolocation'
-          # - win-ver: 1809
-          #   win-build-ver: 17763
+          # - win-target-ver: 1809
+          #   win-target-build-ver: 17763
           #   nodert-package-name: '@nodert-win10-rs5/windows.devices.geolocation'
-          # - win-ver: 1903
-          #   win-build-ver: 18362
+          # - win-target-ver: 1903
+          #   win-target-build-ver: 18362
           #   nodert-package-name: '@nodert-win10-19h1/windows.devices.geolocation'
-          - win-ver: 2004
-            win-build-ver: 19041
+          - win-target-ver: 2004
+            win-target-build-ver: 19041
             nodert-package-name: '@nodert-win10-20h1/windows.devices.geolocation'
     steps:
       - uses: actions/checkout@v3
@@ -75,14 +75,14 @@ jobs:
           # msbuild-architecture: x64
       - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.7
         with:
-          sdk-version: ${{ matrix.win-build-ver }}
+          sdk-version: ${{ matrix.win-target-build-ver }}
       # - uses: lukka/get-cmake@v.3.23.2
       # - name: Build new SDK
       #   shell: bash
       #   run: |
-      #     cmake -DCMAKE_SYSTEM_VERSION=10.0.${{ matrix.win-build-ver }}.0
+      #     cmake -DCMAKE_SYSTEM_VERSION=10.0.${{ matrix.win-target-build-ver }}.0
       #     cmake --build .
 
       - run: npm ci --fund=false
-      - name: NodeRT Windows 10 ${{ matrix.win-ver }} (${{ matrix.win-ver }})
+      - name: NodeRT Windows 10 ${{ matrix.win-target-ver }} (${{ matrix.win-target-build-ver }})
         run: npm install ${{ matrix.nodert-package-name }}
