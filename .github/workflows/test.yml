@@ -29,6 +29,7 @@ jobs:
             win-ver: windows-2019
             vs-ver: 2019
           - vs-build-ver: '[17,18)'
+            vs-build-arch: x64
             win-ver: windows-latest
             vs-ver: 2022
           # - win-target-ver: 1511
@@ -72,7 +73,8 @@ jobs:
         uses: microsoft/setup-msbuild@v1.1
         with:
           vs-version: ${{ matrix.vs-build-ver }}
-          # msbuild-architecture: x64
+          # https://github.com/microsoft/setup-msbuild/blob/master/action.yml#L18 Only available in 17.0+
+          msbuild-architecture: ${{ matrix.vs-build-arch }}
       - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.7
         with:
           sdk-version: ${{ matrix.win-target-build-ver }}
