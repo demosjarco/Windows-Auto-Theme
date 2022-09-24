@@ -18,31 +18,32 @@ jobs:
       matrix:
         python-ver: ['3.x', '3.11.0-alpha - 3.11.0']
         node-ver: [lts/*, latest]
-        vs-build-ver: ['[15,16)', '[16,17)', '[17,18)']
+        # vs-build-ver: ['[15,16)', '[16,17)', '[17,18)']
+        vs-build-ver: ['[17,18)']
         # win-build-ver: [1511, 1607, 1703, 1709, 1803, 1809, 1903, 2004]
-        win-ver: [1511, 1607, 1703, 1709, 1803, 2004]
+        win-ver: [2004]
         include:
-          - vs-build-ver: '[15,16)'
-            vs-ver: 2017
-          - vs-build-ver: '[16,17)'
-            vs-ver: 2019
+          # - vs-build-ver: '[15,16)'
+          #   vs-ver: 2017
+          # - vs-build-ver: '[16,17)'
+          #   vs-ver: 2019
           - vs-build-ver: '[17,18)'
             vs-ver: 2022
-          - win-ver: 1511
-            win-build-ver: 10586
-            nodert-package-name: '@nodert-win10/windows.devices.geolocation'
-          - win-ver: 1607
-            win-build-ver: 14393
-            nodert-package-name: '@nodert-win10-au/windows.devices.geolocation'
-          - win-ver: 1703
-            win-build-ver: 15063
-            nodert-package-name: '@nodert-win10-cu/windows.devices.geolocation'
-          - win-ver: 1709
-            win-build-ver: 16299
-            nodert-package-name: '@nodert-win10-rs3/windows.devices.geolocation'
-          - win-ver: 1803
-            win-build-ver: 17134
-            nodert-package-name: '@nodert-win10-rs4/windows.devices.geolocation'
+          # - win-ver: 1511
+          #   win-build-ver: 10586
+          #   nodert-package-name: '@nodert-win10/windows.devices.geolocation'
+          # - win-ver: 1607
+          #   win-build-ver: 14393
+          #   nodert-package-name: '@nodert-win10-au/windows.devices.geolocation'
+          # - win-ver: 1703
+          #   win-build-ver: 15063
+          #   nodert-package-name: '@nodert-win10-cu/windows.devices.geolocation'
+          # - win-ver: 1709
+          #   win-build-ver: 16299
+          #   nodert-package-name: '@nodert-win10-rs3/windows.devices.geolocation'
+          # - win-ver: 1803
+          #   win-build-ver: 17134
+          #   nodert-package-name: '@nodert-win10-rs4/windows.devices.geolocation'
           # - win-ver: 1809
           #   win-build-ver: 17763
           #   nodert-package-name: '@nodert-win10-rs5/windows.devices.geolocation'
