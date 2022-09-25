@@ -83,12 +83,5 @@ jobs:
       #     cmake --build .
 
       - run: npm ci --fund=false
-        env:
-          npm_config_target: 1.2.3
-          npm_config_arch: x64
-          npm_config_target_arch: x64
-          npm_config_disturl: https://electronjs.org/headers
-          npm_config_runtime: electron
-          npm_config_build_from_source: true
       - name: NodeRT Windows 10 ${{ matrix.win-target-ver }} (${{ matrix.win-target-build-ver }})
         run: npm install ${{ matrix.nodert-package-name }}
