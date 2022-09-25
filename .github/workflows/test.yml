@@ -16,8 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # node-ver: [lts/*, latest]
-        node-ver: [lts/*]
+        node-ver: [lts/*, latest]
         vs-ver: [2019, 2022]
         # win-target-ver: [10v1511, 10v1607, 10v1703, 10v1709, 10v1803, 10v2004, 10v21H1, 11v21H2, 11v22H2]
         win-target-ver: [10v1709, 10v1803, 10v2004, 10v21H1, 11v21H2]
