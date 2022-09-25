@@ -19,8 +19,8 @@ jobs:
         # node-ver: [lts/*, latest]
         node-ver: [lts/*]
         vs-ver: [2019, 2022]
-        # win-target-ver: [1511, 1607, 1703, 1709, 1803, 2004, 21H1]
-        win-target-ver: [1709, 1803, 2004, 21H1]
+        # win-target-ver: [10v1511, 10v1607, 10v1703, 10v1709, 10v1803, 10v2004, 10v21H1]
+        win-target-ver: [10v1709, 10v1803, 10v2004, 10v21H1]
         include:
           - vs-ver: 2019
             vs-build-ver: '[16,17)'
@@ -29,19 +29,19 @@ jobs:
             vs-build-ver: '[17,18)'
             vs-build-arch: x64
             win-ver: windows-latest
-          # - win-target-ver: 1511
+          # - win-target-ver: 10v1511
           #   win-target-build-ver: 10586
           #   nodert-package-name: '@nodert-win10/windows.devices.geolocation'
-          # - win-target-ver: 1607
+          # - win-target-ver: 10v1607
           #   win-target-build-ver: 14393
           #   nodert-package-name: '@nodert-win10-au/windows.devices.geolocation'
-          # - win-target-ver: 1703
+          # - win-target-ver: 10v1703
           #   win-target-build-ver: 15063
           #   nodert-package-name: '@nodert-win10-cu/windows.devices.geolocation'
-          - win-target-ver: 1709
+          - win-target-ver: 10v1709
             win-target-build-ver: 16299
             nodert-package-name: '@nodert-win10-rs3/windows.devices.geolocation'
-          - win-target-ver: 1803
+          - win-target-ver: 10v1803
             win-target-build-ver: 17134
             nodert-package-name: '@nodert-win10-rs4/windows.devices.geolocation'
           # - win-target-ver: 1809
@@ -50,22 +50,22 @@ jobs:
           # - win-target-ver: 1903
           #   win-target-build-ver: 18362
           #   nodert-package-name: '@nodert-win10-19h1/windows.devices.geolocation'
-          - win-target-ver: 2004
+          - win-target-ver: 10v2004
             win-target-build-ver: 19041
             nodert-package-name: '@nodert-win10-20h1/windows.devices.geolocation'
-          - win-target-ver: 21H1
+          - win-target-ver: 10v21H1
             win-target-build-ver: 20348
             nodert-package-name: '@nodert-win10-21h1/windows.devices.geolocation'
         exclude:
-          - win-target-ver: 1511
+          - win-target-ver: 10v1511
             vs-ver: 2022
-          - win-target-ver: 1607
+          - win-target-ver: 10v1607
             vs-ver: 2022
-          - win-target-ver: 1703
+          - win-target-ver: 10v1703
             vs-ver: 2022
-          - win-target-ver: 1709
+          - win-target-ver: 10v1709
             vs-ver: 2022
-          - win-target-ver: 1803
+          - win-target-ver: 10v1803
             vs-ver: 2022
     steps:
       - uses: actions/checkout@v3
@@ -97,5 +97,5 @@ jobs:
       #     cmake --build .
 
       - run: npm ci --fund=false
-      - name: NodeRT Windows 10 ${{ matrix.win-target-ver }} (${{ matrix.win-target-build-ver }})
+      - name: NodeRT Windows ${{ matrix.win-target-ver }} (${{ matrix.win-target-build-ver }})
         run: npm install ${{ matrix.nodert-package-name }}
