@@ -18,9 +18,17 @@ jobs:
       matrix:
         # node-ver: [lts/*, latest]
         node-ver: [lts/*]
+        vs-ver: [2019, 2022]
         # win-target-ver: [1511, 1607, 1703, 1709, 1803, 2004]
         win-target-ver: [1709, 1803, 2004]
         include:
+          - vs-ver: 2019
+            vs-build-ver: '[16,17)'
+            win-ver: windows-2019
+          - vs-ver: 2022
+            vs-build-ver: '[17,18)'
+            vs-build-arch: x64
+            win-ver: windows-latest
           # - win-target-ver: 1511
           #   win-target-build-ver: 10586
           #   nodert-package-name: '@nodert-win10/windows.devices.geolocation'
@@ -33,11 +41,9 @@ jobs:
           - win-target-ver: 1709
             win-target-build-ver: 16299
             nodert-package-name: '@nodert-win10-rs3/windows.devices.geolocation'
-            vs-ver: 2019
           - win-target-ver: 1803
             win-target-build-ver: 17134
             nodert-package-name: '@nodert-win10-rs4/windows.devices.geolocation'
-            vs-ver: 2019
           # - win-target-ver: 1809
           #   win-target-build-ver: 17763
           #   nodert-package-name: '@nodert-win10-rs5/windows.devices.geolocation'
@@ -47,7 +53,6 @@ jobs:
           - win-target-ver: 2004
             win-target-build-ver: 19041
             nodert-package-name: '@nodert-win10-20h1/windows.devices.geolocation'
-            vs-ver: [2019, 2022]
     steps:
       - uses: actions/checkout@v3
 
