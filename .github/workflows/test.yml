@@ -98,12 +98,12 @@ jobs:
       - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.7
         with:
           sdk-version: ${{ matrix.win-target-build-ver }}
-      # - uses: lukka/get-cmake@v.3.23.2
-      # - name: Build new SDK
-      #   shell: bash
-      #   run: |
-      #     cmake -DCMAKE_SYSTEM_VERSION=10.0.${{ matrix.win-target-build-ver }}.0
-      #     cmake --build .
+      - uses: lukka/get-cmake@v.3.23.2
+      - name: Build new SDK
+        shell: bash
+        run: |
+          cmake -DCMAKE_SYSTEM_VERSION=10.0.${{ matrix.win-target-build-ver }}.0
+          cmake --build .
 
       - run: npm ci --fund=false
       - name: NodeRT Windows ${{ matrix.win-target-ver }} (${{ matrix.win-target-build-ver }})
