@@ -15,6 +15,7 @@
 		"format:fix": "npm run less:fix && npm run prettier:fix && npm run lint:fix",
 		"start": "electron .",
 		"dev": "electronmon .",
+		"rebuild": "electron-rebuild",
 		"prepare": "npm run format:fix",
 		"test": "echo \"Error: no test specified\" && exit 0",
 		"pack:win": "electron-packager . --icon=images/logo/icon.ico --out=builds/packaged --ignore='^/builds' --platform=win32 --asar --overwrite",
@@ -38,6 +39,7 @@
 	"devDependencies": {
 		"electron": "^20.2.0",
 		"electron-packager": "^16.0.0",
+		"electron-rebuild": "^3.2.9",
 		"electron-winstaller": "^5.0.0",
 		"electronmon": "^2.0.2",
 		"eslint": "^8.24.0",
