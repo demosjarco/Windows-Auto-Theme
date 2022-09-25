@@ -59,7 +59,7 @@ jobs:
             win-target-build-ver: 22000
             nodert-package-name: '@nodert-win11/windows.devices.geolocation'
           - win-target-ver: 11v22H2
-            win-target-build-ver: 22000
+            win-target-build-ver: 22621
             nodert-package-name: '@nodert-win11-22h2/windows.devices.geolocation'
         exclude:
           - win-target-ver: 10v1511
