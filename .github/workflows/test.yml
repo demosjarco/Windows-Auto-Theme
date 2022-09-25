@@ -19,8 +19,8 @@ jobs:
         # node-ver: [lts/*, latest]
         node-ver: [lts/*]
         vs-ver: [2019, 2022]
-        # win-target-ver: [1511, 1607, 1703, 1709, 1803, 2004]
-        win-target-ver: [1709, 1803, 2004]
+        # win-target-ver: [1511, 1607, 1703, 1709, 1803, 2004, 21H1]
+        win-target-ver: [1709, 1803, 2004, 21H1]
         include:
           - vs-ver: 2019
             vs-build-ver: '[16,17)'
@@ -53,6 +53,9 @@ jobs:
           - win-target-ver: 2004
             win-target-build-ver: 19041
             nodert-package-name: '@nodert-win10-20h1/windows.devices.geolocation'
+          - win-target-ver: 21H1
+            win-target-build-ver: 20348
+            nodert-package-name: '@nodert-win10-21h1/windows.devices.geolocation'
         exclude:
           - win-target-ver: 1511
             vs-ver: 2022
