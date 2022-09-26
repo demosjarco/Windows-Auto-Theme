@@ -70,6 +70,8 @@ jobs:
             vs-ver: 2022
           - win-target-ver: 10v1709
             vs-ver: 2022
+          - win-target-ver: 10v1803
+            vs-ver: 2022
           - win-target-ver: 11v21H2
             vs-ver: 2019
           - win-target-ver: 11v22H2
