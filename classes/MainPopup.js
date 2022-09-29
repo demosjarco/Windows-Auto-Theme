@@ -80,12 +80,12 @@ module.exports.MainPopup = class {
 				label: 'Location',
 				submenu: [
 					{
-						label: 'IP Address',
+						label: 'Geolocation',
 						type: 'radio',
 						click: () => {},
 					},
 					{
-						label: 'Geolocation',
+						label: 'IP Address',
 						type: 'radio',
 						click: () => {},
 					},
