@@ -4,7 +4,6 @@ module.exports.Irl = class {
 	constructor(locJson) {
 		this.#config = {
 			url: '/json',
-			method: 'get',
 			baseURL: 'https://api.sunrisesunset.io',
 			params: {
 				lat: locJson.lat,
@@ -15,7 +14,8 @@ module.exports.Irl = class {
 
 	getTimes(callback) {
 		const axios = require('axios');
-		axios(this.#config)
+		axios
+			.get(this.#config)
 			.catch((error) => {
 				throw error;
 			})
