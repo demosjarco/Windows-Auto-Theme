@@ -143,6 +143,10 @@ module.exports.MainPopup = class {
 
 	#setupConfigStorage() {
 		return new electronStore({
+			// https://github.com/ajv-validator/ajv-formats
+			// https://ajv.js.org/json-type-definition.html
+			// https://ajv.js.org/json-schema.html#type
+			// https://lightrun.com/answers/sindresorhus-electron-store-usage-of-electron-store-in-renderer-processes
 			schema: {
 				mode: {
 					type: 'string',
