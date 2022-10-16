@@ -15,16 +15,18 @@ module.exports.Irl = class {
 
 	getTimes(callback) {
 		const axios = require('axios');
-		axios(this.#config).catch((error) => {
-			throw error;
-		}).then((response) => {
-			if (response.status == 200) {
-				const currentDay = new Date();
-				callback({
-					sr: new Date(`${currentDay.toLocaleDateString()} ${response.data.results.sunrise}`),
-					ss: new Date(`${currentDay.toLocaleDateString()} ${response.data.results.sunset}`),
-				});
-			}
-		});
+		axios(this.#config)
+			.catch((error) => {
+				throw error;
+			})
+			.then((response) => {
+				if (response.status == 200) {
+					const currentDay = new Date();
+					callback({
+						sr: new Date(`${currentDay.toLocaleDateString()} ${response.data.results.sunrise}`),
+						ss: new Date(`${currentDay.toLocaleDateString()} ${response.data.results.sunset}`),
+					});
+				}
+			});
 	}
 };
