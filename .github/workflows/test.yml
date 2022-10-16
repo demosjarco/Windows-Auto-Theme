@@ -108,3 +108,4 @@ jobs:
       - run: npm ci --fund=false
       - name: NodeRT Windows ${{ matrix.win-target-ver }} (${{ matrix.win-target-build-ver }})
         run: npm install ${{ matrix.nodert-package-name }}
+      - run: npm run rebuild
