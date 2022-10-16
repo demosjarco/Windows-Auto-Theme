@@ -17,14 +17,18 @@ module.exports.MainPopup = class {
 						label: 'Sunset to sunrise',
 						type: 'radio',
 						checked: this.store.get('mode') === 'irl',
-						click: this.#menuModeChange,
+						click: async (menuItem, browserWindow, event) => {
+							this.store.set('mode', menuItem.id);
+						},
 					},
 					{
 						id: 'time',
 						label: 'Custom time',
 						type: 'radio',
 						checked: this.store.get('mode') === 'time',
-						click: this.#menuModeChange,
+						click: async (menuItem, browserWindow, event) => {
+							this.store.set('mode', menuItem.id);
+						},
 						enabled: false,
 					},
 					{
@@ -32,14 +36,18 @@ module.exports.MainPopup = class {
 						label: 'Force Light',
 						type: 'radio',
 						checked: this.store.get('mode') === 'light',
-						click: this.#menuModeChange,
+						click: async (menuItem, browserWindow, event) => {
+							this.store.set('mode', menuItem.id);
+						},
 					},
 					{
 						id: 'dark',
 						label: 'Force Dark',
 						type: 'radio',
 						checked: this.store.get('mode') === 'dark',
-						click: this.#menuModeChange,
+						click: async (menuItem, browserWindow, event) => {
+							this.store.set('mode', menuItem.id);
+						},
 					},
 				],
 			},
@@ -50,16 +58,24 @@ module.exports.MainPopup = class {
 				label: 'Affect',
 				submenu: [
 					{
+						id: 'affect.windows',
 						label: 'Windows',
 						type: 'checkbox',
-						checked: true,
-						click: () => {},
+						checked: this.store.get('affect.windows'),
+						click: async (menuItem, browserWindow, event) => {
+							console.log(menuItem.id, menuItem.checked);
+							this.store.set(menuItem.id, menuItem.checked);
+						},
 					},
 					{
+						id: 'affect.apps',
 						label: 'Apps',
 						type: 'checkbox',
-						checked: true,
-						click: () => {},
+						checked: this.store.get('affect.apps'),
+						click: async (menuItem, browserWindow, event) => {
+							console.log(menuItem.id, menuItem.checked);
+							this.store.set(menuItem.id, menuItem.checked);
+						},
 					},
 				],
 			},
@@ -125,6 +141,17 @@ module.exports.MainPopup = class {
 					enum: ['irl', 'time', 'light', 'dark'],
 					default: 'irl',
 				},
+				affect: {
+					type: 'object',
+					properties: {
+						windows: { type: 'boolean' },
+						apps: { type: 'boolean' },
+					},
+					default: {
+						windows: true,
+						apps: true,
+					},
+				},
 			},
 			clearInvalidConfig: true,
 		});
@@ -152,9 +179,5 @@ module.exports.MainPopup = class {
 
 	#updateMenu() {
 		this.#tray.setContextMenu(Menu.buildFromTemplate(this.#baseMenu));
-	}
-
-	async #menuModeChange(menuItem, browserWindow, event) {
-		this.store.set('mode', menuItem.id);
 	}
 };
