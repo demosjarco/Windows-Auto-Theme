@@ -112,4 +112,4 @@ jobs:
       - run: npm test
         # Remove if on 2022-10-25 when 18.x reaches LTS
         # node:test is only available on 18 and up
-        if: ${{ matrix.node-ver == latest }}
+        if: ${{ matrix.node-ver == 'latest' }}
