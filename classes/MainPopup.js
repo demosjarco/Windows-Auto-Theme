@@ -1,5 +1,5 @@
 const { app, Menu, Tray } = require('electron');
-const Store = require('electron-store');
+const electronStore = require('electron-store');
 
 module.exports.MainPopup = class {
 	#tray;
@@ -142,7 +142,7 @@ module.exports.MainPopup = class {
 	}
 
 	#setupConfigStorage() {
-		return new Store({
+		return new electronStore({
 			schema: {
 				mode: {
 					type: 'string',
