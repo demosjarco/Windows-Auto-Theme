@@ -1,4 +1,5 @@
 const { app, Menu, Tray } = require('electron');
+const Store = require('electron-store');
 
 module.exports.MainPopup = class {
 	#tray;
