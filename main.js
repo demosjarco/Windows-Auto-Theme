@@ -33,6 +33,7 @@ function getLocation(method, callback) {
 
 function getTimes(method, callback) {
 	let locationUnsubscribe;
+	
 	switch (method) {
 		case 'irl':
 			const { Irl } = require('./classes/IrlTimes.js');
