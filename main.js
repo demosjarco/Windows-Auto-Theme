@@ -8,11 +8,12 @@ const store = new electronStore({ watch: true });
 
 function getLocation(method, callback) {
 	switch (method) {
-		case 'geo':
+		case 'geo': {
 			const { Geo } = require('./classes/Geo.js');
 			const windowsGeo = new Geo();
 			windowsGeo.getCoordinates(callback);
 			break;
+		}
 	}
 }
 
@@ -20,7 +21,7 @@ function getTimes(method, callback) {
 	let locationUnsubscribe;
 
 	switch (method) {
-		case 'irl':
+		case 'irl': {
 			const { Irl } = require('./classes/IrlTimes.js');
 
 			getLocation(store.get('location'), (loc) => {
@@ -34,11 +35,13 @@ function getTimes(method, callback) {
 				});
 			});
 			break;
-		case 'time':
+		}
+		case 'time': {
 			if (locationUnsubscribe) {
 				locationUnsubscribe();
 			}
 			break;
+		}
 	}
 }
 
