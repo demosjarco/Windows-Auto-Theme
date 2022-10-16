@@ -6,21 +6,6 @@ const { MainPopup } = require('./classes/MainPopup.js');
 const electronStore = require('electron-store');
 const store = new electronStore({ watch: true });
 
-app.whenReady().then(() => {
-	new MainPopup();
-
-	getTimes(store.get('mode'), (times) => {
-		console.log(times);
-		// Setup timer to these times
-	});
-	store.onDidChange('mode', (newValue, oldValue) => {
-		getTimes(newValue, (times) => {
-			console.log(times);
-			// Setup timer to these times
-		});
-	});
-});
-
 function getLocation(method, callback) {
 	switch (method) {
 		case 'geo':
@@ -33,7 +18,7 @@ function getLocation(method, callback) {
 
 function getTimes(method, callback) {
 	let locationUnsubscribe;
-	
+
 	switch (method) {
 		case 'irl':
 			const { Irl } = require('./classes/IrlTimes.js');
@@ -56,3 +41,18 @@ function getTimes(method, callback) {
 			break;
 	}
 }
+
+app.whenReady().then(() => {
+	new MainPopup();
+
+	getTimes(store.get('mode'), (times) => {
+		console.log(times);
+		// Setup timer to these times
+	});
+	store.onDidChange('mode', (newValue, oldValue) => {
+		getTimes(newValue, (times) => {
+			console.log(times);
+			// Setup timer to these times
+		});
+	});
+});
