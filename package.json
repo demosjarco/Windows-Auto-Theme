@@ -17,8 +17,8 @@
 		"dev": "electronmon .",
 		"rebuild": "electron-rebuild",
 		"prepare": "npm run format:fix",
-		"test": "echo \"Error: no test specified\" && exit 0",
 		"pack:win": "electron-packager . --icon=images/logo/icon.ico --out=builds/packaged --ignore='^/builds' --platform=win32 --asar",
+		"test": "node --test tests/*.js",
 		"inst:win": "node winstaller.js"
 	},
 	"repository": {
