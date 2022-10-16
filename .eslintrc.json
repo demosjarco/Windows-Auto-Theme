@@ -84,7 +84,7 @@
 		"default-case-last": "error",
 		"default-param-last": ["error"],
 		"dot-notation": [
-			"error",
+			"warn",
 			{
 				"allowKeywords": false
 			}
