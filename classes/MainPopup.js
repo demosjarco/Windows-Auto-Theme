@@ -86,14 +86,22 @@ module.exports.MainPopup = class {
 				label: 'Location',
 				submenu: [
 					{
+						id: 'geo',
 						label: 'Geolocation',
 						type: 'radio',
-						click: () => {},
+						checked: this.store.get('location') === 'geo',
+						click: async (menuItem, browserWindow, event) => {
+							this.store.set('location', menuItem.id);
+						},
 					},
 					{
+						id: 'ip',
 						label: 'IP Address',
 						type: 'radio',
-						click: () => {},
+						checked: this.store.get('location') === 'ip',
+						click: async (menuItem, browserWindow, event) => {
+							this.store.set('location', menuItem.id);
+						},
 					},
 				],
 			},
@@ -151,6 +159,11 @@ module.exports.MainPopup = class {
 						windows: true,
 						apps: true,
 					},
+				},
+				location: {
+					type: 'string',
+					enum: ['geo', 'ip'],
+					default: 'geo',
 				},
 			},
 			clearInvalidConfig: true,
