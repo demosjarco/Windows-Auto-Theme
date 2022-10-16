@@ -6,31 +6,40 @@ module.exports.MainPopup = class {
 	#baseMenu = [];
 
 	constructor() {
+		this.store = this.#setupConfigStorage();
 		this.#tray = new Tray('./images/logo/icon.png', 'e48ff901-f225-4bb4-9f21-0743f0f61261');
 		this.#baseMenu = [
 			{
 				label: 'Mode',
 				submenu: [
 					{
+						id: 'irl',
 						label: 'Sunset to sunrise',
 						type: 'radio',
-						click: () => {},
+						checked: this.store.get('mode') === 'irl',
+						click: this.#menuModeChange,
 					},
 					{
+						id: 'time',
 						label: 'Custom time',
 						type: 'radio',
-						click: () => {},
+						checked: this.store.get('mode') === 'time',
+						click: this.#menuModeChange,
 						enabled: false,
 					},
 					{
+						id: 'light',
 						label: 'Force Light',
 						type: 'radio',
-						click: () => {},
+						checked: this.store.get('mode') === 'light',
+						click: this.#menuModeChange,
 					},
 					{
+						id: 'dark',
 						label: 'Force Dark',
 						type: 'radio',
-						click: () => {},
+						checked: this.store.get('mode') === 'dark',
+						click: this.#menuModeChange,
 					},
 				],
 			},
@@ -108,6 +117,19 @@ module.exports.MainPopup = class {
 		this.#updateMenu();
 	}
 
+	#setupConfigStorage() {
+		return new Store({
+			schema: {
+				mode: {
+					type: 'string',
+					enum: ['irl', 'time', 'light', 'dark'],
+					default: 'irl',
+				},
+			},
+			clearInvalidConfig: true,
+		});
+	}
+
 	#timeOptionGenerator(prefix = '', hour = false, minute = false) {
 		let numberOf = 0;
 		if (hour) {
@@ -130,5 +152,9 @@ module.exports.MainPopup = class {
 
 	#updateMenu() {
 		this.#tray.setContextMenu(Menu.buildFromTemplate(this.#baseMenu));
+	}
+
+	async #menuModeChange(menuItem, browserWindow, event) {
+		this.store.set('mode', menuItem.id);
 	}
 };
