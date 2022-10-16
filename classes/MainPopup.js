@@ -1,25 +1,5 @@
 const { app, Menu, Tray } = require('electron');
 
-function timeOptionGenerator(prefix = '', hour = false, minute = false) {
-	let numberOf = 0;
-	if (hour) {
-		numberOf = 24;
-	} else if (minute) {
-		numberOf = 60;
-	}
-
-	let timeOptions = [];
-	for (let i = 0; i < numberOf; i++) {
-		timeOptions.push({
-			id: `${prefix}-${i}`,
-			label: `${i}`,
-			type: 'radio',
-			click: () => {},
-		});
-	}
-	return timeOptions;
-}
-
 module.exports.MainPopup = class {
 	#tray;
 	#baseMenu = [];
@@ -97,22 +77,22 @@ module.exports.MainPopup = class {
 				submenu: [
 					{
 						label: 'Start hour',
-						submenu: timeOptionGenerator('custom-time-start-hour', true),
+						submenu: this.#timeOptionGenerator('custom-time-start-hour', true),
 					},
 					{
 						label: 'Start minute',
-						submenu: timeOptionGenerator('custom-time-start-minute', false, true),
+						submenu: this.#timeOptionGenerator('custom-time-start-minute', false, true),
 					},
 					{
 						type: 'separator',
 					},
 					{
 						label: 'End hour',
-						submenu: timeOptionGenerator('custom-time-end-hour', true),
+						submenu: this.#timeOptionGenerator('custom-time-end-hour', true),
 					},
 					{
 						label: 'End minute',
-						submenu: timeOptionGenerator('custom-time-end-minute', false, true),
+						submenu: this.#timeOptionGenerator('custom-time-end-minute', false, true),
 					},
 				],
 			},
@@ -125,6 +105,26 @@ module.exports.MainPopup = class {
 		];
 		this.#tray.setToolTip(`${app.getName()}`);
 		this.#updateMenu();
+	}
+
+	#timeOptionGenerator(prefix = '', hour = false, minute = false) {
+		let numberOf = 0;
+		if (hour) {
+			numberOf = 24;
+		} else if (minute) {
+			numberOf = 60;
+		}
+
+		let timeOptions = [];
+		for (let i = 0; i < numberOf; i++) {
+			timeOptions.push({
+				id: `${prefix}-${i}`,
+				label: `${i}`,
+				type: 'radio',
+				click: () => {},
+			});
+		}
+		return timeOptions;
 	}
 
 	#updateMenu() {
