@@ -90,7 +90,7 @@ jobs:
           cache: 'npm'
 
       - name: Setting up MsBuild x64 with vs${{ matrix.vs-ver }}
-        uses: microsoft/setup-msbuild@v1.1
+        uses: microsoft/setup-msbuild@v1.2
         with:
           vs-version: ${{ matrix.vs-build-ver }}
           # https://github.com/microsoft/setup-msbuild/blob/master/action.yml#L18 Only available in 17.0+
