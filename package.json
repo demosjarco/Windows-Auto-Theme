@@ -48,6 +48,6 @@
 		"eslint-plugin-json": "^3.1.0",
 		"eslint-plugin-yml": "^1.4.0",
 		"less-watch-compiler": "^1.16.3",
-		"prettier": "^2.7.1"
+		"prettier": "^2.8.2"
 	}
 }
