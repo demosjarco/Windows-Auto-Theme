@@ -38,7 +38,7 @@
 		"windows-registry": "github:UnityTech/windows-registry-node"
 	},
 	"devDependencies": {
-		"electron": "^21.2.2",
+		"electron": "^22.2.0",
 		"electron-packager": "^17.1.1",
 		"electron-rebuild": "^3.2.9",
 		"electron-winstaller": "^5.1.0",
