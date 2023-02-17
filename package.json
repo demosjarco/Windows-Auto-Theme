@@ -34,7 +34,7 @@
 	"dependencies": {
 		"dotenv": "^16.0.3",
 		"electron-store": "^8.1.0",
-		"windows-registry": "github:UnityTech/windows-registry-node"
+		"winreg": "^1.2.4"
 	},
 	"devDependencies": {
 		"electron": "^23.1.0",
