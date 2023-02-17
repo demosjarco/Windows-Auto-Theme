@@ -94,7 +94,7 @@ jobs:
           check-latest: true
           cache: 'npm'
 
-      - uses: microsoft/setup-msbuild@v1.2
+      - uses: microsoft/setup-msbuild@v1.3
         with:
           msbuild-architecture: x64
       - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.9
