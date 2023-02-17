@@ -33,11 +33,11 @@
 	"homepage": "https://github.com/demosjarco/Windows-Auto-Theme#readme",
 	"dependencies": {
 		"dotenv": "^16.0.3",
-		"electron": "^23.1.0",
 		"electron-store": "^8.1.0",
 		"windows-registry": "github:UnityTech/windows-registry-node"
 	},
 	"devDependencies": {
+		"electron": "^23.1.0",
 		"electron-packager": "^17.1.1",
 		"electron-rebuild": "^3.2.9",
 		"electron-winstaller": "^5.1.0",
