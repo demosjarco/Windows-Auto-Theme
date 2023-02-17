@@ -34,6 +34,7 @@
 	"dependencies": {
 		"dotenv": "^16.0.3",
 		"electron-store": "^8.1.0",
+		"node-cron": "^3.0.2",
 		"winreg": "^1.2.4"
 	},
 	"devDependencies": {

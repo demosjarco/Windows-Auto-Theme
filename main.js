@@ -50,14 +50,33 @@ function getTimes(method) {
 app.whenReady().then(() => {
 	new MainPopup();
 
+	const cron = require('node-cron');
+	let cronTaskLight;
+	let cronTaskDark;
+
 	getTimes(store.get('mode')).then((times) => {
 		console.log(times);
 		// Setup timer to these times
+		cronTaskLight = cron.schedule(`${times.sr.getMinutes()} ${times.sr.getHours()} * * *`, () => {
+			//
+		});
+		cronTaskDark = cron.schedule(`${times.ss.getMinutes()} ${times.ss.getHours()} * * *`, () => {
+			//
+		});
 	});
 	store.onDidChange('mode', (newValue, oldValue) => {
 		getTimes(newValue).then((times) => {
 			console.log(times);
 			// Setup timer to these times
+			cronTaskLight.stop();
+			cronTaskDark.stop();
+
+			cronTaskLight = cron.schedule(`${times.sr.getMinutes()} ${times.sr.getHours()} * * *`, () => {
+				//
+			});
+			cronTaskDark = cron.schedule(`${times.ss.getMinutes()} ${times.ss.getHours()} * * *`, () => {
+				//
+			});
 		});
 	});
 });
