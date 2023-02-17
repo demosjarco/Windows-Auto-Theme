@@ -1,9 +1,83 @@
 module.exports.Geo = class {
+	#sdkGeoLocation;
 	#locator;
 
+	#sdkImporter() {
+		try {
+			const { Geolocator } = require('@nodert-win11-22h2/windows.devices.geolocation');
+			this.#sdkGeoLocation = Geolocator;
+			return;
+		} catch (error) {
+			/* empty */
+		}
+		try {
+			const { Geolocator } = require('@nodert-win11/windows.devices.geolocation');
+			this.#sdkGeoLocation = Geolocator;
+			return;
+		} catch (error) {
+			/* empty */
+		}
+		try {
+			const { Geolocator } = require('@nodert-win10-21h1/windows.devices.geolocation');
+			this.#sdkGeoLocation = Geolocator;
+			return;
+		} catch (error) {
+			/* empty */
+		}
+		try {
+			const { Geolocator } = require('@nodert-win10-20h1/windows.devices.geolocation');
+			this.#sdkGeoLocation = Geolocator;
+			return;
+		} catch (error) {
+			/* empty */
+		}
+		try {
+			const { Geolocator } = require('@nodert-win10-19h1/windows.devices.geolocation');
+			this.#sdkGeoLocation = Geolocator;
+			return;
+		} catch (error) {
+			/* empty */
+		}
+		try {
+			const { Geolocator } = require('@nodert-win10-rs4/windows.devices.geolocation');
+			this.#sdkGeoLocation = Geolocator;
+			return;
+		} catch (error) {
+			/* empty */
+		}
+		try {
+			const { Geolocator } = require('@nodert-win10-rs3/windows.devices.geolocation');
+			this.#sdkGeoLocation = Geolocator;
+			return;
+		} catch (error) {
+			/* empty */
+		}
+		try {
+			const { Geolocator } = require('@nodert-win10-cu/windows.devices.geolocation');
+			this.#sdkGeoLocation = Geolocator;
+			return;
+		} catch (error) {
+			/* empty */
+		}
+		try {
+			const { Geolocator } = require('@nodert-win10-au/windows.devices.geolocation');
+			this.#sdkGeoLocation = Geolocator;
+			return;
+		} catch (error) {
+			/* empty */
+		}
+		try {
+			const { Geolocator } = require('@nodert-win10/windows.devices.geolocation');
+			this.#sdkGeoLocation = Geolocator;
+			return;
+		} catch (error) {
+			/* empty */
+		}
+	}
+
 	constructor() {
-		const { Geolocator } = require('@nodert-win11/windows.devices.geolocation');
-		this.#locator = new Geolocator();
+		this.#sdkImporter();
+		this.#locator = new this.#sdkGeoLocation();
 		// "perfect" time zone = 15 degrees of longitude
 		// 1 degree of longitude = 111km at the equator
 		const timeZoneHemiKm = 15 * 111;
