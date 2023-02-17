@@ -1,3 +1,4 @@
+/* eslint-disable accessor-pairs */
 module.exports.Geo = class {
 	#sdkGeoLocation;
 	#locator;
@@ -92,18 +93,21 @@ module.exports.Geo = class {
 		this.#locator.AllowFallbackToConsentlessPositions = () => {};
 	}
 
-	getCoordinates(callback) {
-		this.#locator.getGeopositionAsync((error, result) => {
-			if (error) {
-				throw error;
-			}
+	get coordinates() {
+		return new Promise((resolve, reject) => {
+			// eslint-disable-next-line consistent-return
+			this.#locator.getGeopositionAsync((error, result) => {
+				if (error) {
+					return reject(error);
+				}
 
-			const { coordinate } = result;
-			const { longitude, latitude } = coordinate;
+				const { coordinate } = result;
+				const { longitude, latitude } = coordinate;
 
-			callback({
-				lat: latitude,
-				long: longitude,
+				resolve({
+					lat: latitude,
+					long: longitude,
+				});
 			});
 		});
 	}

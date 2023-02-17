@@ -6,40 +6,42 @@ const { MainPopup } = require('./classes/MainPopup.js');
 const electronStore = require('electron-store');
 const store = new electronStore({ watch: true });
 
-function getLocation(method, callback) {
+// eslint-disable-next-line consistent-return
+function getLocation(method) {
 	switch (method) {
 		case 'geo': {
 			const { Geo } = require('./classes/Geo.js');
 			const windowsGeo = new Geo();
-			windowsGeo.getCoordinates(callback);
-			break;
+			return windowsGeo.coordinates;
 		}
 	}
 }
 
-function getTimes(method, callback) {
+function getTimes(method) {
 	let locationUnsubscribe;
 
 	switch (method) {
 		case 'irl': {
 			const { Irl } = require('./classes/IrlTimes.js');
 
-			getLocation(store.get('location'), (loc) => {
-				const locIrl = new Irl(loc);
-				locIrl.getTimes(callback);
-			});
-			locationUnsubscribe = store.onDidChange('location', (newValue, oldValue) => {
-				getLocation(newValue, (loc) => {
+			return new Promise((resolve, reject) => {
+				getLocation(store.get('location')).then((loc) => {
 					const locIrl = new Irl(loc);
-					locIrl.getTimes(callback);
+					resolve(locIrl.times);
+				});
+				locationUnsubscribe = store.onDidChange('location', (newValue, oldValue) => {
+					getLocation(newValue).then((loc) => {
+						const locIrl = new Irl(loc);
+						resolve(locIrl.times);
+					});
 				});
 			});
-			break;
 		}
 		case 'time': {
 			if (locationUnsubscribe) {
 				locationUnsubscribe();
 			}
+			// make sure to return as promise
 			break;
 		}
 	}
@@ -48,12 +50,12 @@ function getTimes(method, callback) {
 app.whenReady().then(() => {
 	new MainPopup();
 
-	getTimes(store.get('mode'), (times) => {
+	getTimes(store.get('mode')).then((times) => {
 		console.log(times);
 		// Setup timer to these times
 	});
 	store.onDidChange('mode', (newValue, oldValue) => {
-		getTimes(newValue, (times) => {
+		getTimes(newValue).then((times) => {
 			console.log(times);
 			// Setup timer to these times
 		});
