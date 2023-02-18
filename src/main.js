@@ -29,18 +29,18 @@ function getTimes(method) {
 					const locIrl = new Irl(loc);
 					resolve(locIrl.times);
 				});
-				locationUnsubscribe = store.onDidChange('location', (newValue, oldValue) => {
+				/*locationUnsubscribe = store.onDidChange('location', (newValue, oldValue) => {
 					getLocation(newValue).then((loc) => {
 						const locIrl = new Irl(loc);
 						resolve(locIrl.times);
 					});
-				});
+				});*/
 			});
 		}
 		case 'time': {
-			if (locationUnsubscribe) {
+			/*if (locationUnsubscribe) {
 				locationUnsubscribe();
-			}
+			}*/
 			// make sure to return as promise
 			break;
 		}
