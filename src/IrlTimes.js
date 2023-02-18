@@ -11,7 +11,6 @@ module.exports.Irl = class {
 	get times() {
 		return new Promise((resolve, reject) => {
 			fetch(this.#url, {
-				method: 'GET',
 				headers: {
 					Accept: 'application/json',
 				},
