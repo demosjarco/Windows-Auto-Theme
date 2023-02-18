@@ -73,35 +73,44 @@ function changeTheme(lightTheme, windowsAffect = store.get('affect.windows'), ap
 	}
 }
 
+const cron = require('node-cron');
+let cronTaskLight;
+let cronTaskDark;
+function setupCron(mode = store.get('mode')) {
+	switch (mode) {
+		case 'light':
+			changeTheme(true);
+			break;
+		case 'dark':
+			changeTheme(false);
+			break;
+		default:
+			getTimes(mode).then((times) => {
+				// Setup timer to these times
+				if (cronTaskLight) cronTaskLight.stop();
+				if (cronTaskLight) cronTaskDark.stop();
+
+				cronTaskLight = cron.schedule(`${times.sr.getMinutes()} ${times.sr.getHours()} * * *`, () => {
+					changeTheme(true);
+				});
+				cronTaskDark = cron.schedule(`${times.ss.getMinutes()} ${times.ss.getHours()} * * *`, () => {
+					changeTheme(false);
+				});
+			});
+			break;
+	}
+}
+
 app.whenReady().then(() => {
 	new MainPopup();
 
-	const cron = require('node-cron');
-	let cronTaskLight;
-	let cronTaskDark;
+	setupCron();
 
-	getTimes(store.get('mode')).then((times) => {
-		console.log(times);
-		// Setup timer to these times
-		cronTaskLight = cron.schedule(`${times.sr.getMinutes()} ${times.sr.getHours()} * * *`, () => {
-			changeTheme(true);
-		});
-		cronTaskDark = cron.schedule(`${times.ss.getMinutes()} ${times.ss.getHours()} * * *`, () => {
-			changeTheme(false);
-		});
-	});
 	store.onDidChange('mode', (newValue, oldValue) => {
-		getTimes(newValue).then((times) => {
-			// Setup timer to these times
-			cronTaskLight.stop();
-			cronTaskDark.stop();
+		setupCron(newValue);
+	});
 
-			cronTaskLight = cron.schedule(`${times.sr.getMinutes()} ${times.sr.getHours()} * * *`, () => {
-				changeTheme(true);
-			});
-			cronTaskDark = cron.schedule(`${times.ss.getMinutes()} ${times.ss.getHours()} * * *`, () => {
-				changeTheme(false);
-			});
-		});
+	store.onDidChange('affect', (newValue, oldValue) => {
+		setupCron();
 	});
 });
