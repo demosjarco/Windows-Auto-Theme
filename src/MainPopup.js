@@ -7,7 +7,7 @@ module.exports.MainPopup = class {
 
 	constructor() {
 		this.store = this.#setupConfigStorage();
-		this.#tray = new Tray('../images/logo/icon.png', 'e48ff901-f225-4bb4-9f21-0743f0f61261');
+		this.#tray = new Tray('./images/logo/icon.png', 'e48ff901-f225-4bb4-9f21-0743f0f61261');
 		this.#baseMenu = [
 			{
 				label: 'Mode',
