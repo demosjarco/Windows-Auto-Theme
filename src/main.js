@@ -113,4 +113,7 @@ app.whenReady().then(() => {
 	store.onDidChange('mode', (newValue, oldValue) => {
 		setupCron(newValue);
 	});
+	store.onDidChange('location', (newValue, oldValue) => {
+		setupCron();
+	});
 });
