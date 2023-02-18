@@ -30,9 +30,9 @@
 	},
 	"homepage": "https://github.com/demosjarco/Windows-Auto-Theme#readme",
 	"dependencies": {
+		"cron": "^2.2.0",
 		"dotenv": "^16.0.3",
 		"electron-store": "^8.1.0",
-		"node-cron": "^3.0.2",
 		"winreg": "^1.2.4"
 	},
 	"devDependencies": {
