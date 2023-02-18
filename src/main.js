@@ -60,20 +60,12 @@ function changeTheme(lightTheme, windowsAffect = store.get('affect.windows'), ap
 	});
 	if (windowsAffect) {
 		regKey.set('SystemUsesLightTheme', Registry.REG_DWORD, Number(lightTheme), (err) => {
-			if (err) {
-				throw err;
-			} else {
-				console.log('Changed system to', lightTheme ? 'light' : 'dark');
-			}
+			if (err) throw err;
 		});
 	}
 	if (appsAffect) {
 		regKey.set('AppsUseLightTheme', Registry.REG_DWORD, Number(lightTheme), (err) => {
-			if (err) {
-				throw err;
-			} else {
-				console.log('Changed apps to', lightTheme ? 'light' : 'dark');
-			}
+			if (err) throw err;
 		});
 	}
 }
