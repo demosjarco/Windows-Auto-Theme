@@ -47,13 +47,13 @@ function getTimes(method) {
 	}
 }
 
-function changeTheme(lightTheme) {
+function changeTheme(lightTheme, windowsAffect = store.get('affect.windows'), appsAffect = store.get('affect.apps')) {
 	const Registry = require('winreg');
 	const regKey = new Registry({
 		hive: Registry.HKCU,
 		key: '\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize',
 	});
-	if (store.get('affect.windows')) {
+	if (windowsAffect) {
 		regKey.set('SystemUsesLightTheme', Registry.REG_DWORD, Number(lightTheme), (err) => {
 			if (err) {
 				console.error(err);
@@ -62,7 +62,7 @@ function changeTheme(lightTheme) {
 			}
 		});
 	}
-	if (store.get('affect.apps')) {
+	if (appsAffect) {
 		regKey.set('AppsUseLightTheme', Registry.REG_DWORD, Number(lightTheme), (err) => {
 			if (err) {
 				console.error(err);
