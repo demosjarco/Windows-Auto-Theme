@@ -70,7 +70,7 @@ function changeTheme(lightTheme, windowsAffect = store.get('affect.windows'), ap
 	}
 }
 
-const cron = require('node-cron');
+const CronJob = require('cron').CronJob;
 let cronTaskLight;
 let cronTaskDark;
 function setupCron(mode = store.get('mode')) {
@@ -87,14 +87,24 @@ function setupCron(mode = store.get('mode')) {
 				if (cronTaskLight) cronTaskLight.stop();
 				if (cronTaskDark) cronTaskDark.stop();
 
-				cronTaskLight = cron.schedule(`${times.sr.getMinutes()} ${times.sr.getHours()} * * *`, () => {
-					changeTheme(true);
-				});
-				cronTaskDark = cron.schedule(`${times.ss.getMinutes()} ${times.ss.getHours()} * * *`, () => {
-					changeTheme(false);
-				});
+				cronTaskLight = new CronJob(
+					`${times.sr.getMinutes()} ${times.sr.getHours()} * * *`,
+					() => {
+						changeTheme(true);
+					},
+					null,
+					true,
+				);
+
+				cronTaskDark = new CronJob(
+					`${times.ss.getMinutes()} ${times.ss.getHours()} * * *`,
+					() => {
+						changeTheme(false);
+					},
+					null,
+					true,
+				);
 			});
-			break;
 	}
 }
 
