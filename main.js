@@ -109,8 +109,4 @@ app.whenReady().then(() => {
 	store.onDidChange('mode', (newValue, oldValue) => {
 		setupCron(newValue);
 	});
-
-	store.onDidChange('affect', (newValue, oldValue) => {
-		setupCron();
-	});
 });
