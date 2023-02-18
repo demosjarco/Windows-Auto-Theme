@@ -70,6 +70,7 @@ function changeTheme(lightTheme, windowsAffect = store.get('affect.windows'), ap
 	}
 }
 
+const cron = require('node-cron');
 let cronTaskLight;
 let cronTaskDark;
 function setupCron(mode = store.get('mode')) {
@@ -82,7 +83,6 @@ function setupCron(mode = store.get('mode')) {
 			break;
 		default:
 			getTimes(mode).then((times) => {
-				const cron = require('node-cron');
 				// Setup timer to these times
 				if (cronTaskLight) cronTaskLight.stop();
 				if (cronTaskDark) cronTaskDark.stop();
