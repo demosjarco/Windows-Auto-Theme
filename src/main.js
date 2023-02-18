@@ -92,7 +92,7 @@ function setupCron(mode = store.get('mode')) {
 				const cron = require('node-cron');
 				// Setup timer to these times
 				if (cronTaskLight) cronTaskLight.stop();
-				if (cronTaskLight) cronTaskDark.stop();
+				if (cronTaskDark) cronTaskDark.stop();
 
 				cronTaskLight = cron.schedule(`${times.sr.getMinutes()} ${times.sr.getHours()} * * *`, () => {
 					changeTheme(true);
