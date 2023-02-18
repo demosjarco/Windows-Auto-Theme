@@ -14,6 +14,10 @@ function getLocation(method) {
 			const windowsGeo = new Geo();
 			return windowsGeo.coordinates;
 		}
+		case 'ip':
+			const { IP } = require('./IP');
+			const ipGeo = new IP();
+			return ipGeo.coordinates;
 	}
 }
 
