@@ -47,6 +47,32 @@ function getTimes(method) {
 	}
 }
 
+function changeTheme(lightTheme) {
+	const Registry = require('winreg');
+	const regKey = new Registry({
+		hive: Registry.HKCU,
+		key: '\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize',
+	});
+	if (store.get('affect.windows')) {
+		regKey.set('SystemUsesLightTheme', Registry.REG_DWORD, Number(lightTheme), (err) => {
+			if (err) {
+				console.error(err);
+			} else {
+				console.log('Changed system to', lightTheme ? 'light' : 'dark');
+			}
+		});
+	}
+	if (store.get('affect.apps')) {
+		regKey.set('AppsUseLightTheme', Registry.REG_DWORD, Number(lightTheme), (err) => {
+			if (err) {
+				console.error(err);
+			} else {
+				console.log('Changed apps to', lightTheme ? 'light' : 'dark');
+			}
+		});
+	}
+}
+
 app.whenReady().then(() => {
 	new MainPopup();
 
@@ -58,10 +84,10 @@ app.whenReady().then(() => {
 		console.log(times);
 		// Setup timer to these times
 		cronTaskLight = cron.schedule(`${times.sr.getMinutes()} ${times.sr.getHours()} * * *`, () => {
-			//
+			changeTheme(true);
 		});
 		cronTaskDark = cron.schedule(`${times.ss.getMinutes()} ${times.ss.getHours()} * * *`, () => {
-			//
+			changeTheme(false);
 		});
 	});
 	store.onDidChange('mode', (newValue, oldValue) => {
@@ -72,10 +98,10 @@ app.whenReady().then(() => {
 			cronTaskDark.stop();
 
 			cronTaskLight = cron.schedule(`${times.sr.getMinutes()} ${times.sr.getHours()} * * *`, () => {
-				//
+				changeTheme(true);
 			});
 			cronTaskDark = cron.schedule(`${times.ss.getMinutes()} ${times.ss.getHours()} * * *`, () => {
-				//
+				changeTheme(false);
 			});
 		});
 	});
