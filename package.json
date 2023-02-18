@@ -3,7 +3,7 @@
 	"productName": "Windows Auto Theme",
 	"version": "1.0.0",
 	"description": "Change windows theme based on location daylight or time",
-	"main": "main.js",
+	"main": "src/main.js",
 	"scripts": {
 		"lint": "eslint --ext .js,.jsx,.json,.yml .",
 		"lint:fix": "eslint --ext .js,.jsx,.json,.yml . --fix",

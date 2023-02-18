@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 const { app } = require('electron');
-const { MainPopup } = require('./classes/MainPopup.js');
+const { MainPopup } = require('./MainPopup.js');
 const electronStore = require('electron-store');
 const store = new electronStore({ watch: true });
 
@@ -10,7 +10,7 @@ const store = new electronStore({ watch: true });
 function getLocation(method) {
 	switch (method) {
 		case 'geo': {
-			const { Geo } = require('./classes/Geo.js');
+			const { Geo } = require('./Geo.js');
 			const windowsGeo = new Geo();
 			return windowsGeo.coordinates;
 		}
@@ -22,7 +22,7 @@ function getTimes(method) {
 
 	switch (method) {
 		case 'irl': {
-			const { Irl } = require('./classes/IrlTimes.js');
+			const { Irl } = require('./IrlTimes.js');
 
 			return new Promise((resolve, reject) => {
 				getLocation(store.get('location')).then((loc) => {
