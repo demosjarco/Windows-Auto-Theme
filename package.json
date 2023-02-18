@@ -5,8 +5,6 @@
 	"description": "Change windows theme based on location daylight or time",
 	"main": "main.js",
 	"scripts": {
-		"less": "less-watch-compiler",
-		"less:fix": "less-watch-compiler --run-once",
 		"lint": "eslint --ext .js,.jsx,.json,.yml .",
 		"lint:fix": "eslint --ext .js,.jsx,.json,.yml . --fix",
 		"prettier": "prettier --check **/*.{js,css,json,md}",
@@ -47,7 +45,6 @@
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-json": "^3.1.0",
 		"eslint-plugin-yml": "^1.5.0",
-		"less-watch-compiler": "^1.16.3",
 		"prettier": "^2.8.4"
 	}
 }
