@@ -92,7 +92,6 @@ app.whenReady().then(() => {
 	});
 	store.onDidChange('mode', (newValue, oldValue) => {
 		getTimes(newValue).then((times) => {
-			console.log(times);
 			// Setup timer to these times
 			cronTaskLight.stop();
 			cronTaskDark.stop();
