@@ -23,7 +23,7 @@ function getLocation(method) {
 }
 
 function getTimes(method) {
-	let locationUnsubscribe;
+	// let locationUnsubscribe;
 
 	switch (method) {
 		case 'irl': {
