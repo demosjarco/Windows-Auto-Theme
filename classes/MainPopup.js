@@ -97,6 +97,7 @@ module.exports.MainPopup = class {
 					{
 						id: 'ip',
 						label: 'IP Address',
+						enabled: false,
 						type: 'radio',
 						checked: this.store.get('location') === 'ip',
 						click: async (menuItem, browserWindow, event) => {
