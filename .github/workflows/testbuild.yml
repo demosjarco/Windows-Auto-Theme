@@ -67,6 +67,13 @@ jobs:
       - run: npm run package -- --arch=${{ matrix.arch }}
 
       # Make
+      - uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          script: |
+            const globber = await glob.create('**/WiX Toolset v*/bin');
+            const files = await globber.glob();
+            return files;
       - run: npm run make -- --arch=${{ matrix.arch }} --targets="${{ matrix.makers-module-name }}" --skip-package
 
       # Publish
