@@ -24,6 +24,8 @@ jobs:
         include:
           - win-build-ver: 20348
             nodert-package-name: '@nodert-win10-21h1/windows.devices.geolocation'
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -56,6 +58,8 @@ jobs:
 
       # Publish
       - run: npm run publish -- --dry-run
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - run: rm -rf node_modules out/Windows Auto Theme-win32-${{ matrix.arch }}/resources/app/node_modules
         shell: bash
