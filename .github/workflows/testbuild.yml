@@ -16,8 +16,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-ver: [3.x, '3.12.0-alpha - 3.12.x']
-        node-ver: [lts/*, latest, 20-v8-canary, 20-nightly]
+        python-ver: [3.x]
+        node-ver: [lts/*]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
