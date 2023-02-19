@@ -63,7 +63,6 @@ module.exports.MainPopup = class {
 						type: 'checkbox',
 						checked: this.store.get('affect.windows'),
 						click: (menuItem, browserWindow, event) => {
-							console.log(menuItem.id, menuItem.checked);
 							this.store.set(menuItem.id, menuItem.checked);
 						},
 					},
@@ -73,7 +72,6 @@ module.exports.MainPopup = class {
 						type: 'checkbox',
 						checked: this.store.get('affect.apps'),
 						click: (menuItem, browserWindow, event) => {
-							console.log(menuItem.id, menuItem.checked);
 							this.store.set(menuItem.id, menuItem.checked);
 						},
 					},
@@ -139,8 +137,6 @@ module.exports.MainPopup = class {
 				type: 'checkbox',
 				checked: app.getLoginItemSettings().executableWillLaunchAtLogin,
 				click: (menuItem, browserWindow, event) => {
-					console.log(menuItem.id, menuItem.checked);
-
 					// To work with Electron's autoUpdater on Windows, which uses Squirrel, you'll want to set the launch path to Update.exe, and pass arguments that specify your application name.
 					// const appFolder = path.dirname(process.execPath);
 					// const updateExe = path.resolve(appFolder, '..', 'Update.exe');
