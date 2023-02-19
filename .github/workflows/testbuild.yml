@@ -2,3 +2,30 @@ on:
   push:
     branches:
       - "packaging"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    strategy:
+      fail-fast: false
+      matrix:
+        python-ver: [3.x, '3.12.0-alpha - 3.12.x']
+        node-ver: [lts/*, latest, 20-v8-canary, 20-nightly]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-ver }}
+          check-latest: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-ver }}
+          check-latest: true
+          cache: 'npm'
