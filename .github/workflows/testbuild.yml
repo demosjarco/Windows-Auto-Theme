@@ -36,3 +36,6 @@ jobs:
         with:
           sdk-version: ${{ matrix.win-build-ver }}
       - run: npm ci
+      - run: npm install ${{ matrix.nodert-package-name }}
+      - name: Fix ${{ matrix.nodert-package-name }} for electron
+        run: npm run rebuild
