@@ -131,10 +131,7 @@ module.exports.MainPopup = class {
 				],
 			},
 			{
-				label: 'Quit',
-				click: () => {
-					app.quit();
-				},
+				role: 'quit',
 			},
 		];
 		this.#tray.setToolTip(`${app.getName()}`);
