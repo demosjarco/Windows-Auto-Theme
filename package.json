@@ -15,9 +15,7 @@
 		"dev": "electronmon .",
 		"rebuild": "electron-rebuild",
 		"prepare": "npm run format:fix",
-		"test": "node --test tests/*.js",
-		"pack:win": "electron-packager . --icon=images/logo/icon.ico --out=builds/packaged --ignore=\"(builds*|tests*)\" --platform=win32 --asar",
-		"inst:win": "node winstaller.js"
+		"test": "node --test tests/*.js"
 	},
 	"repository": {
 		"type": "git",
