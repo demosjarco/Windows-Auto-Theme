@@ -54,7 +54,7 @@ jobs:
       # Publish
       - run: npm run publish -- --dry-run
 
-      - run: rm -rf node_modules
+      - run: rm -rf node_modules out/Windows Auto Theme-win32-${{ matrix.arch }}/resources/app/node_modules
         shell: bash
       - run: tree /a /f
       - run: tree /a /f > tree.txt
