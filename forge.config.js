@@ -32,7 +32,7 @@ module.exports = {
 			config: {
 				features: {
 					autoLaunch: true,
-					// autoUpdate: true,
+					autoUpdate: true,
 				},
 				icon: './images/logo/icon.ico',
 				manufacturer: 'DemosJarco',
