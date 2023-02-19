@@ -52,3 +52,7 @@ jobs:
       - run: npm run package -- --arch=${{ matrix.arch }}
 
       - run: tree /a /f | Where-Object {$_ -notlike "*node_modules"}
+      - run: tree /a /f | Where-Object {$_ -notlike "*node_modules"} > tree.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          path: tree.txt
