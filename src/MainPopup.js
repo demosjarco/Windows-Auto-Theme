@@ -159,12 +159,14 @@ module.exports.MainPopup = class {
 				affect: {
 					type: 'object',
 					properties: {
-						windows: { type: 'boolean' },
-						apps: { type: 'boolean' },
-					},
-					default: {
-						windows: true,
-						apps: true,
+						windows: {
+							type: 'boolean',
+							default: true,
+						},
+						apps: {
+							type: 'boolean',
+							default: true,
+						},
 					},
 				},
 				location: {
