@@ -51,4 +51,4 @@ jobs:
       # Make
       - run: npm run package -- --arch=${{ matrix.arch }}
 
-      - run: tree /a /f
+      - run: tree /a /f | Where-Object {$_ -notlike "*node_modules"}
