@@ -68,9 +68,9 @@ jobs:
       - run: npm run make -- --arch=${{ matrix.arch }} --targets="${{ matrix.makers-module-name }}" --skip-package
 
       # Publish
-      - run: npm run publish -- --dry-run
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      # - run: npm run publish -- --dry-run
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.token }}
 
       - run: rm -rf node_modules out/Windows Auto Theme-win32-${{ matrix.arch }}/resources/app/node_modules
         shell: bash
