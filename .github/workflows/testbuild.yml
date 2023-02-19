@@ -21,9 +21,17 @@ jobs:
         win-build: [20348]
         # arch: [ia32, x64, armv7l, arm64]
         arch: [x64]
-        # makers: ['@electron-forge/maker-appx', '@electron-forge/maker-squirrel', '@electron-forge/maker-wix', '@electron-forge/maker-zip']
-        makers: ['@electron-forge/maker-squirrel', '@electron-forge/maker-wix', '@electron-forge/maker-zip']
+        # makers: [appx, squirrel, wix, zip]
+        makers: [squirrel, wix, zip]
         include:
+          - makers: "appx"
+            makers-module-name: '@electron-forge/maker-appx'
+          - makers: "squirrel"
+            makers-module-name: '@electron-forge/maker-squirrel'
+          - makers: "wix"
+            makers-module-name: '@electron-forge/maker-wix'
+          - makers: "zip"
+            makers-module-name: '@electron-forge/maker-zip'
           - win-build: 20348
             nodert-package-name: '@nodert-win10-21h1/windows.devices.geolocation'
     permissions:
@@ -54,7 +62,7 @@ jobs:
       - run: npm run package -- --arch=${{ matrix.arch }}
 
       # Make
-      - run: npm run make -- --arch=${{ matrix.arch }} --targets="${{ matrix.makers }}" --skip-package
+      - run: npm run make -- --arch=${{ matrix.arch }} --targets="${{ matrix.makers-module-name }}" --skip-package
 
       # Publish
       - run: npm run publish -- --dry-run
