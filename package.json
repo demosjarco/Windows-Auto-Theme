@@ -17,7 +17,8 @@
 		"prepare": "npm run format:fix",
 		"test": "node --test tests/*.js",
 		"package": "electron-forge package",
-		"make": "electron-forge make"
+		"make": "electron-forge make",
+		"publish": "electron-forge publish"
 	},
 	"repository": {
 		"type": "git",
