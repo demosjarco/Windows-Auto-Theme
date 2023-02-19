@@ -28,7 +28,7 @@ jobs:
           #   makers-module-name: '@electron-forge/maker-appx'
           # - makers: "squirrel"
           #   makers-module-name: '@electron-forge/maker-squirrel'
-          - makers: "wix"
+          - makers: 'wix'
             makers-module-name: '@electron-forge/maker-wix'
             makers-additional-name: 'electron-wix-msi'
           # - makers: "zip"
@@ -62,7 +62,7 @@ jobs:
         run: npm run rebuild
       - name: Install electron forge stuff
         run: npm install -D ${{ matrix.makers-module-name }} ${{ matrix.makers-additional-name }} @electron-forge/plugin-auto-unpack-natives @electron-forge/publisher-github
-      
+
       # Package
       - run: npm run package -- --arch=${{ matrix.arch }}
 
