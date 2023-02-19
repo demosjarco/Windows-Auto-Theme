@@ -2,10 +2,10 @@ name: Test
 on:
   push:
     paths-ignore:
-      - ".vscode/**"
+      - '.vscode/**'
   pull_request:
     paths-ignore:
-      - ".vscode/**"
+      - '.vscode/**'
 
 permissions:
   contents: read
