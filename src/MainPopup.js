@@ -17,18 +17,14 @@ module.exports.MainPopup = class {
 						label: 'Sunset to sunrise',
 						type: 'radio',
 						checked: this.store.get('mode') === 'irl',
-						click: (menuItem, browserWindow, event) => {
-							this.store.set('mode', menuItem.id);
-						},
+						click: (menuItem, browserWindow, event) => this.store.set('mode', menuItem.id),
 					},
 					{
 						id: 'time',
 						label: 'Custom time',
 						type: 'radio',
 						checked: this.store.get('mode') === 'time',
-						click: (menuItem, browserWindow, event) => {
-							this.store.set('mode', menuItem.id);
-						},
+						click: (menuItem, browserWindow, event) => this.store.set('mode', menuItem.id),
 						enabled: false,
 					},
 					{
@@ -36,18 +32,14 @@ module.exports.MainPopup = class {
 						label: 'Force Light',
 						type: 'radio',
 						checked: this.store.get('mode') === 'light',
-						click: (menuItem, browserWindow, event) => {
-							this.store.set('mode', menuItem.id);
-						},
+						click: (menuItem, browserWindow, event) => this.store.set('mode', menuItem.id),
 					},
 					{
 						id: 'dark',
 						label: 'Force Dark',
 						type: 'radio',
 						checked: this.store.get('mode') === 'dark',
-						click: (menuItem, browserWindow, event) => {
-							this.store.set('mode', menuItem.id);
-						},
+						click: (menuItem, browserWindow, event) => this.store.set('mode', menuItem.id),
 					},
 				],
 			},
@@ -62,18 +54,14 @@ module.exports.MainPopup = class {
 						label: 'Windows',
 						type: 'checkbox',
 						checked: this.store.get('affect.windows'),
-						click: (menuItem, browserWindow, event) => {
-							this.store.set(menuItem.id, menuItem.checked);
-						},
+						click: (menuItem, browserWindow, event) => this.store.set(menuItem.id, menuItem.checked),
 					},
 					{
 						id: 'affect.apps',
 						label: 'Apps',
 						type: 'checkbox',
 						checked: this.store.get('affect.apps'),
-						click: (menuItem, browserWindow, event) => {
-							this.store.set(menuItem.id, menuItem.checked);
-						},
+						click: (menuItem, browserWindow, event) => this.store.set(menuItem.id, menuItem.checked),
 					},
 				],
 			},
@@ -88,18 +76,14 @@ module.exports.MainPopup = class {
 						label: 'Geolocation',
 						type: 'radio',
 						checked: this.store.get('location') === 'geo',
-						click: (menuItem, browserWindow, event) => {
-							this.store.set('location', menuItem.id);
-						},
+						click: (menuItem, browserWindow, event) => this.store.set('location', menuItem.id),
 					},
 					{
 						id: 'ip',
 						label: 'IP Address',
 						type: 'radio',
 						checked: this.store.get('location') === 'ip',
-						click: (menuItem, browserWindow, event) => {
-							this.store.set('location', menuItem.id);
-						},
+						click: (menuItem, browserWindow, event) => this.store.set('location', menuItem.id),
 					},
 				],
 			},
