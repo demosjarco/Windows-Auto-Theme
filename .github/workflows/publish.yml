@@ -56,7 +56,7 @@ jobs:
       - run: git push
       - run: git push --tags
       - name: Get commit sha for `build`
-        run: echo "::set-output name=sha::$(git rev-parse HEAD)"
+        run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
         id: version-change-commit
 
   build:
