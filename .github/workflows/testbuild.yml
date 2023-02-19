@@ -45,7 +45,7 @@ jobs:
           check-latest: true
       - uses: actions/setup-node@v3
         with:
-          nodesion: ${{ matrix.node }}
+          node-version: ${{ matrix.node }}
           check-latest: true
           cache: 'npm'
       - uses: microsoft/setup-msbuild@v1.3
