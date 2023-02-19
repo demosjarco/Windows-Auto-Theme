@@ -112,6 +112,7 @@ app.whenReady().then(() => {
 	app.setAboutPanelOptions({
 		applicationName: app.getName(),
 		applicationVersion: process.env.npm_package_version,
+		// credits: 'TODO',
 		authors: 'DemosJarco',
 		website: new URL('https://github.com/demosjarco/Windows-Auto-Theme').toString(),
 		iconPath: './images/logo/icon.png',
