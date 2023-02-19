@@ -29,3 +29,10 @@ jobs:
           node-version: ${{ matrix.node-ver }}
           check-latest: true
           cache: 'npm'
+      - uses: microsoft/setup-msbuild@v1
+        with:
+          msbuild-architecture: x64
+      - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1
+        with:
+          sdk-version: ${{ matrix.win-build-ver }}
+      - run: npm ci
