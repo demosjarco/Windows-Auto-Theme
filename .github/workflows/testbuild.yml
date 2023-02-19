@@ -22,7 +22,7 @@ jobs:
         # arch: [ia32, x64, armv7l, arm64]
         arch: [x64]
         # makers: [appx, squirrel, wix, zip]
-        makers: [wix]
+        makers: [squirrel, wix, zip]
         include:
           # - makers: "appx"
           #   makers-module-name: '@electron-forge/maker-appx'
