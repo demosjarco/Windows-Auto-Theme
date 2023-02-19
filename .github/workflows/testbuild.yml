@@ -18,6 +18,8 @@ jobs:
       matrix:
         python-ver: [3.x]
         node-ver: [lts/*]
+        win-build-ver: [20348]
+        nodert-package-name: ['@nodert-win10-21h1/windows.devices.geolocation']
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
