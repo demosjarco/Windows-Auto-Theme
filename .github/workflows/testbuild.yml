@@ -57,6 +57,8 @@ jobs:
       - run: npm install ${{ matrix.nodert-package-name }}
       - name: Fix ${{ matrix.nodert-package-name }} for electron
         run: npm run rebuild
+      - name: Install electron forge stuff
+        run: npm install -D ${{ matrix.makers-module-name }} @electron-forge/plugin-auto-unpack-natives @electron-forge/publisher-github
       
       # Package
       - run: npm run package -- --arch=${{ matrix.arch }}
