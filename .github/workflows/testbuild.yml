@@ -51,6 +51,9 @@ jobs:
       # Package
       - run: npm run package -- --arch=${{ matrix.arch }}
 
+      # Make
+      - run: npm run make -- --skip-package --arch=${{ matrix.arch }}
+
       # Publish
       - run: npx electron-forge publish -- --dry-run
 
