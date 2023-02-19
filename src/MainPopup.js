@@ -22,10 +22,10 @@ module.exports.MainPopup = class {
 					{
 						id: 'time',
 						label: 'Custom time',
+						enabled: false,
 						type: 'radio',
 						checked: this.store.get('mode') === 'time',
 						click: (menuItem, browserWindow, event) => this.store.set('mode', menuItem.id),
-						enabled: false,
 					},
 					{
 						id: 'light',
