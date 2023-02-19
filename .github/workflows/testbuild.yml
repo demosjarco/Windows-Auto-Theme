@@ -55,7 +55,7 @@ jobs:
       - run: npm run make -- --skip-package --arch=${{ matrix.arch }}
 
       # Publish
-      - run: npx electron-forge publish -- --dry-run
+      - run: npm run publish -- --dry-run
 
       - run: rm -rf node_modules out/Windows Auto Theme-win32-${{ matrix.arch }}/resources/app/node_modules
         shell: bash
