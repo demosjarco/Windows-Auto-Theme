@@ -68,12 +68,14 @@ jobs:
 
       # Make
       - uses: actions/github-script@v6
+        id: my-script
         with:
           result-encoding: string
           script: |
             const globber = await glob.create('**/WiX Toolset v*/bin');
-            const files = await globber.glob();
-            return files;
+            const files = await globber.glob(`${process.env.programfiles(x86)}`);
+            return JSON.stringify(files);
+      run: echo "${{steps.my-script.outputs.result}}"
       - run: npm run make -- --arch=${{ matrix.arch }} --targets="${{ matrix.makers-module-name }}" --skip-package
 
       # Publish
