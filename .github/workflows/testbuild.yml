@@ -21,7 +21,8 @@ jobs:
         win-build: [20348]
         # arch: [ia32, x64, armv7l, arm64]
         arch: [x64]
-        makers: ['@electron-forge/maker-appx', '@electron-forge/maker-squirrel', '@electron-forge/maker-wix', '@electron-forge/maker-zip']
+        # makers: ['@electron-forge/maker-appx', '@electron-forge/maker-squirrel', '@electron-forge/maker-wix', '@electron-forge/maker-zip']
+        makers: ['@electron-forge/maker-squirrel', '@electron-forge/maker-wix', '@electron-forge/maker-zip']
         include:
           - win-build: 20348
             nodert-package-name: '@nodert-win10-21h1/windows.devices.geolocation'
