@@ -3,7 +3,7 @@ name: Optimize PNGs
 on:
   push:
     paths:
-      - "**.png"
+      - '**.png'
   workflow_dispatch:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: step-security/harden-runner@v2
         with:
-            egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
       - uses: actions/checkout@v3
       - name: Rustup Cache
         uses: actions/cache@v3
