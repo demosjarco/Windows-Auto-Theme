@@ -29,11 +29,11 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-ver }}
-          # check-latest: true
+          check-latest: true
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-ver }}
-          # check-latest: true
+          check-latest: true
           cache: 'npm'
       - uses: microsoft/setup-msbuild@v1.3
         with:
