@@ -2,6 +2,7 @@ module.exports = {
 	packagerConfig: {
 		asar: true,
 		icon: 'images/logo/icon.ico',
+		ignore: '(builds*|tests*)',
 	},
 	rebuildConfig: {},
 	makers: [
