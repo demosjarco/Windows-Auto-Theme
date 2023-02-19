@@ -109,6 +109,14 @@ function setupCron(mode = store.get('mode')) {
 }
 
 app.whenReady().then(() => {
+	app.setAboutPanelOptions({
+		applicationName: app.getName(),
+		applicationVersion: process.env.npm_package_version,
+		authors: 'DemosJarco',
+		website: new URL('https://github.com/demosjarco/Windows-Auto-Theme').toString(),
+		iconPath: './images/logo/icon.png',
+	});
+
 	new MainPopup();
 
 	setupCron();

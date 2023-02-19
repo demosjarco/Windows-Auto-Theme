@@ -131,6 +131,12 @@ module.exports.MainPopup = class {
 				],
 			},
 			{
+				type: 'separator',
+			},
+			{
+				role: 'about',
+			},
+			{
 				role: 'quit',
 			},
 		];
