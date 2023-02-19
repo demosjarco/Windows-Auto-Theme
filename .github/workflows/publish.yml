@@ -61,15 +61,14 @@ jobs:
 
   build:
     needs: version
-    runs-on: windows-latest
+    runs-on: windows-2022
     strategy:
       # Still use matrix for ease of substituting values later on
       matrix:
         python-ver: ['3.x']
         node-ver: [lts/*]
-        win-ver: [2004]
-        win-build-ver: [19041]
-        nodert-package-name: ['@nodert-win10-20h1/windows.devices.geolocation']
+        win-build-ver: [20348]
+        nodert-package-name: ['@nodert-win10-21h1/windows.devices.geolocation']
         arch: [ia32, x64, arm64]
         # type: [exe, msi]
         type: [exe]
@@ -108,7 +107,7 @@ jobs:
       #     cmake --build .
 
       - run: npm ci --fund=false
-      - name: NodeRT Windows 10 ${{ matrix.win-ver }} (${{ matrix.win-ver }})
+      - name: NodeRT Windows 10 (${{ matrix.win-build-ver }})
         run: npm install ${{ matrix.nodert-package-name }}
       - run: npm run rebuild
 
