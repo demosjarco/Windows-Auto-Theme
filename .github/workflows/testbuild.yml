@@ -24,8 +24,8 @@ jobs:
         # makers: [appx, squirrel, wix, zip]
         makers: [squirrel, wix, zip]
         include:
-          - makers: "appx"
-            makers-module-name: '@electron-forge/maker-appx'
+          # - makers: "appx"
+          #   makers-module-name: '@electron-forge/maker-appx'
           - makers: "squirrel"
             makers-module-name: '@electron-forge/maker-squirrel'
           - makers: "wix"
