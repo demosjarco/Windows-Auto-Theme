@@ -30,6 +30,7 @@ jobs:
             makers-module-name: '@electron-forge/maker-squirrel'
           - makers: "wix"
             makers-module-name: '@electron-forge/maker-wix'
+            makers-additional-name: 'electron-wix-msi'
           - makers: "zip"
             makers-module-name: '@electron-forge/maker-zip'
           - win-build: 20348
@@ -58,7 +59,7 @@ jobs:
       - name: Fix ${{ matrix.nodert-package-name }} for electron
         run: npm run rebuild
       - name: Install electron forge stuff
-        run: npm install -D ${{ matrix.makers-module-name }} @electron-forge/plugin-auto-unpack-natives @electron-forge/publisher-github
+        run: npm install -D ${{ matrix.makers-module-name }} ${{ matrix.makers-additional-name }} @electron-forge/plugin-auto-unpack-natives @electron-forge/publisher-github
       
       # Package
       - run: npm run package -- --arch=${{ matrix.arch }}
