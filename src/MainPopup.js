@@ -17,7 +17,7 @@ module.exports.MainPopup = class {
 						label: 'Sunset to sunrise',
 						type: 'radio',
 						checked: this.store.get('mode') === 'irl',
-						click: async (menuItem, browserWindow, event) => {
+						click: (menuItem, browserWindow, event) => {
 							this.store.set('mode', menuItem.id);
 						},
 					},
@@ -26,7 +26,7 @@ module.exports.MainPopup = class {
 						label: 'Custom time',
 						type: 'radio',
 						checked: this.store.get('mode') === 'time',
-						click: async (menuItem, browserWindow, event) => {
+						click: (menuItem, browserWindow, event) => {
 							this.store.set('mode', menuItem.id);
 						},
 						enabled: false,
@@ -36,7 +36,7 @@ module.exports.MainPopup = class {
 						label: 'Force Light',
 						type: 'radio',
 						checked: this.store.get('mode') === 'light',
-						click: async (menuItem, browserWindow, event) => {
+						click: (menuItem, browserWindow, event) => {
 							this.store.set('mode', menuItem.id);
 						},
 					},
@@ -45,7 +45,7 @@ module.exports.MainPopup = class {
 						label: 'Force Dark',
 						type: 'radio',
 						checked: this.store.get('mode') === 'dark',
-						click: async (menuItem, browserWindow, event) => {
+						click: (menuItem, browserWindow, event) => {
 							this.store.set('mode', menuItem.id);
 						},
 					},
@@ -62,7 +62,7 @@ module.exports.MainPopup = class {
 						label: 'Windows',
 						type: 'checkbox',
 						checked: this.store.get('affect.windows'),
-						click: async (menuItem, browserWindow, event) => {
+						click: (menuItem, browserWindow, event) => {
 							console.log(menuItem.id, menuItem.checked);
 							this.store.set(menuItem.id, menuItem.checked);
 						},
@@ -72,7 +72,7 @@ module.exports.MainPopup = class {
 						label: 'Apps',
 						type: 'checkbox',
 						checked: this.store.get('affect.apps'),
-						click: async (menuItem, browserWindow, event) => {
+						click: (menuItem, browserWindow, event) => {
 							console.log(menuItem.id, menuItem.checked);
 							this.store.set(menuItem.id, menuItem.checked);
 						},
@@ -90,7 +90,7 @@ module.exports.MainPopup = class {
 						label: 'Geolocation',
 						type: 'radio',
 						checked: this.store.get('location') === 'geo',
-						click: async (menuItem, browserWindow, event) => {
+						click: (menuItem, browserWindow, event) => {
 							this.store.set('location', menuItem.id);
 						},
 					},
@@ -99,7 +99,7 @@ module.exports.MainPopup = class {
 						label: 'IP Address',
 						type: 'radio',
 						checked: this.store.get('location') === 'ip',
-						click: async (menuItem, browserWindow, event) => {
+						click: (menuItem, browserWindow, event) => {
 							this.store.set('location', menuItem.id);
 						},
 					},
