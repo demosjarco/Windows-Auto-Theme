@@ -111,6 +111,9 @@ function setupCron(mode = store.get('mode')) {
 	}
 }
 
+// run this as early in the main process as possible
+if (require('electron-squirrel-startup')) app.quit();
+
 app.whenReady().then(() => {
 	app.setAboutPanelOptions({
 		applicationName: app.getName(),

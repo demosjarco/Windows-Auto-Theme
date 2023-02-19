@@ -10,12 +10,14 @@
 		"prettier": "prettier --check .",
 		"prettier:fix": "prettier --write .",
 		"format": "npm run prettier",
-		"start": "electron .",
 		"format:fix": "npm run prettier:fix",
+		"start": "electron-forge start",
 		"dev": "electronmon .",
 		"rebuild": "electron-rebuild",
 		"prepare": "npm run format:fix",
-		"test": "node --test tests/*.js"
+		"test": "node --test tests/*.js",
+		"package": "electron-forge package",
+		"make": "electron-forge make"
 	},
 	"repository": {
 		"type": "git",
@@ -30,10 +32,17 @@
 	"dependencies": {
 		"cron": "^2.2.0",
 		"dotenv": "^16.0.3",
+		"electron-squirrel-startup": "^1.0.0",
 		"electron-store": "^8.1.0",
 		"winreg": "^1.2.4"
 	},
 	"devDependencies": {
+		"@electron-forge/cli": "^6.0.5",
+		"@electron-forge/maker-appx": "^6.0.5",
+		"@electron-forge/maker-squirrel": "^6.0.5",
+		"@electron-forge/maker-wix": "^6.0.5",
+		"@electron-forge/maker-zip": "^6.0.5",
+		"@electron-forge/publisher-github": "^6.0.5",
 		"electron": "^23.1.0",
 		"electron-rebuild": "^3.2.9",
 		"electronmon": "^2.0.2",
