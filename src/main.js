@@ -30,10 +30,13 @@ function getTimes(method) {
 			const { Irl } = require('./IrlTimes.js');
 
 			return new Promise((resolve, reject) => {
-				getLocation(store.get('location')).then((loc) => {
-					const locIrl = new Irl(loc);
-					resolve(locIrl.times);
-				});
+				getLocation(store.get('location'))
+					.then((loc) => {
+						const locIrl = new Irl(loc);
+						resolve(locIrl.times);
+					})
+					// eslint-disable-next-line dot-notation
+					.catch((error) => reject(error));
 				/*locationUnsubscribe = store.onDidChange('location', (newValue, oldValue) => {
 					getLocation(newValue).then((loc) => {
 						const locIrl = new Irl(loc);
@@ -122,10 +125,10 @@ app.whenReady().then(() => {
 
 	setupCron();
 
-	store.onDidChange('mode', (newValue, oldValue) => {
+	store.onDidChange('mode', (newValue, _oldValue) => {
 		setupCron(newValue);
 	});
-	store.onDidChange('location', (newValue, oldValue) => {
+	store.onDidChange('location', (_newValue, _oldValue) => {
 		setupCron();
 	});
 });

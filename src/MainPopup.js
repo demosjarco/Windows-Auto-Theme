@@ -17,7 +17,7 @@ module.exports.MainPopup = class {
 						label: 'Sunset to sunrise',
 						type: 'radio',
 						checked: this.store.get('mode') === 'irl',
-						click: (menuItem, browserWindow, event) => this.store.set('mode', menuItem.id),
+						click: (menuItem, _browserWindow, _event) => this.store.set('mode', menuItem.id),
 					},
 					{
 						id: 'time',
@@ -25,21 +25,21 @@ module.exports.MainPopup = class {
 						enabled: false,
 						type: 'radio',
 						checked: this.store.get('mode') === 'time',
-						click: (menuItem, browserWindow, event) => this.store.set('mode', menuItem.id),
+						click: (menuItem, _browserWindow, _event) => this.store.set('mode', menuItem.id),
 					},
 					{
 						id: 'light',
 						label: 'Force Light',
 						type: 'radio',
 						checked: this.store.get('mode') === 'light',
-						click: (menuItem, browserWindow, event) => this.store.set('mode', menuItem.id),
+						click: (menuItem, _browserWindow, _event) => this.store.set('mode', menuItem.id),
 					},
 					{
 						id: 'dark',
 						label: 'Force Dark',
 						type: 'radio',
 						checked: this.store.get('mode') === 'dark',
-						click: (menuItem, browserWindow, event) => this.store.set('mode', menuItem.id),
+						click: (menuItem, _browserWindow, _event) => this.store.set('mode', menuItem.id),
 					},
 				],
 			},
@@ -54,14 +54,14 @@ module.exports.MainPopup = class {
 						label: 'Windows',
 						type: 'checkbox',
 						checked: this.store.get('affect.windows'),
-						click: (menuItem, browserWindow, event) => this.store.set(menuItem.id, menuItem.checked),
+						click: (menuItem, _browserWindow, _event) => this.store.set(menuItem.id, menuItem.checked),
 					},
 					{
 						id: 'affect.apps',
 						label: 'Apps',
 						type: 'checkbox',
 						checked: this.store.get('affect.apps'),
-						click: (menuItem, browserWindow, event) => this.store.set(menuItem.id, menuItem.checked),
+						click: (menuItem, _browserWindow, _event) => this.store.set(menuItem.id, menuItem.checked),
 					},
 				],
 			},
@@ -76,14 +76,14 @@ module.exports.MainPopup = class {
 						label: 'Geolocation',
 						type: 'radio',
 						checked: this.store.get('location') === 'geo',
-						click: (menuItem, browserWindow, event) => this.store.set('location', menuItem.id),
+						click: (menuItem, _browserWindow, _event) => this.store.set('location', menuItem.id),
 					},
 					{
 						id: 'ip',
 						label: 'IP Address',
 						type: 'radio',
 						checked: this.store.get('location') === 'ip',
-						click: (menuItem, browserWindow, event) => this.store.set('location', menuItem.id),
+						click: (menuItem, _browserWindow, _event) => this.store.set('location', menuItem.id),
 					},
 				],
 			},
@@ -120,7 +120,7 @@ module.exports.MainPopup = class {
 				sublabel: 'Autostart on login',
 				type: 'checkbox',
 				checked: app.getLoginItemSettings().executableWillLaunchAtLogin,
-				click: (menuItem, browserWindow, event) => {
+				click: (menuItem, _browserWindow, _event) => {
 					// To work with Electron's autoUpdater on Windows, which uses Squirrel, you'll want to set the launch path to Update.exe, and pass arguments that specify your application name.
 					// const appFolder = path.dirname(process.execPath);
 					// const updateExe = path.resolve(appFolder, '..', 'Update.exe');
@@ -184,11 +184,8 @@ module.exports.MainPopup = class {
 
 	#timeOptionGenerator(prefix = '', hour = false, minute = false) {
 		let numberOf = 0;
-		if (hour) {
-			numberOf = 24;
-		} else if (minute) {
-			numberOf = 60;
-		}
+		if (hour) numberOf = 24;
+		else if (minute) numberOf = 60;
 
 		let timeOptions = [];
 		for (let i = 0; i < numberOf; i++) {

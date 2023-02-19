@@ -1,3 +1,4 @@
+/* eslint-disable accessor-pairs */
 module.exports.IP = class {
 	#url = new URL('https://local-ip-geo.demosjarco.dev');
 

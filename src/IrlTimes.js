@@ -5,7 +5,7 @@ module.exports.Irl = class {
 	constructor(locJson) {
 		this.#url.pathname = '/json';
 		this.#url.searchParams.set('lat', locJson.lat);
-		this.#url.searchParams.set('lng', locJson.long);
+		this.#url.searchParams.set('lng', locJson['long']);
 	}
 
 	get times() {
