@@ -97,9 +97,7 @@ module.exports.Geo = class {
 		return new Promise((resolve, reject) => {
 			// eslint-disable-next-line consistent-return
 			this.#locator.getGeopositionAsync((error, result) => {
-				if (error) {
-					return reject(error);
-				}
+				if (error) return reject(error);
 
 				const { coordinate } = result;
 				const { longitude, latitude } = coordinate;
