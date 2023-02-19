@@ -1,4 +1,4 @@
-const { app, Menu, Tray } = require('electron');
+const { app, Menu, Tray, path } = require('electron');
 const electronStore = require('electron-store');
 
 module.exports.MainPopup = class {
@@ -129,6 +129,29 @@ module.exports.MainPopup = class {
 						submenu: this.#timeOptionGenerator('custom-time-end-minute', false, true),
 					},
 				],
+			},
+			{
+				type: 'separator',
+			},
+			{
+				label: 'Startup',
+				sublabel: 'Autostart on login',
+				type: 'checkbox',
+				checked: app.getLoginItemSettings().executableWillLaunchAtLogin,
+				click: (menuItem, browserWindow, event) => {
+					console.log(menuItem.id, menuItem.checked);
+
+					// To work with Electron's autoUpdater on Windows, which uses Squirrel, you'll want to set the launch path to Update.exe, and pass arguments that specify your application name.
+					// const appFolder = path.dirname(process.execPath);
+					// const updateExe = path.resolve(appFolder, '..', 'Update.exe');
+					// const exeName = path.basename(process.execPath);
+
+					app.setLoginItemSettings({
+						openAtLogin: menuItem.checked,
+						// path: updateExe,
+						// args: ['--processStart', `"${exeName}"`, '--process-start-args', `"--hidden"`],
+					});
+				},
 			},
 			{
 				type: 'separator',
