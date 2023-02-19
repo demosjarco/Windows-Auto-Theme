@@ -46,5 +46,4 @@ jobs:
       # Make
       - run: npm run package -- --arch=${{ matrix.arch }}
 
-      - run: tree --gitignore --prune -hFC --du
-        shell: bash
+      - run: tree /f
