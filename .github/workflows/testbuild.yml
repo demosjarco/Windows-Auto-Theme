@@ -19,7 +19,7 @@ jobs:
         python-ver: [3.x]
         node-ver: [lts/*]
         win-build-ver: [20348]
-        # arch: [ia32, x64, arm64]
+        # arch: [ia32, x64, armv7l, arm64]
         arch: [x64]
         include:
           - win-build-ver: 20348
