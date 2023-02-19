@@ -20,6 +20,7 @@ jobs:
         node-ver: [lts/*]
         win-build-ver: [20348]
         nodert-package-name: ['@nodert-win10-21h1/windows.devices.geolocation']
+        arch: [ia32, x64, arm64]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -41,3 +42,6 @@ jobs:
       - run: npm install ${{ matrix.nodert-package-name }}
       - name: Fix ${{ matrix.nodert-package-name }} for electron
         run: npm run rebuild
+      
+      # Make
+      - run: npm run package -- --arch=${{ matrix.arch }}
