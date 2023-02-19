@@ -28,10 +28,12 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
+          token: ${{ github.token }}
           python-version: ${{ matrix.python-ver }}
           check-latest: true
       - uses: actions/setup-node@v3
         with:
+          token: ${{ github.token }}
           node-version: ${{ matrix.node-ver }}
           check-latest: true
           cache: 'npm'
