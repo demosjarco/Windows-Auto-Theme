@@ -51,6 +51,9 @@ jobs:
       # Make
       - run: npm run package -- --arch=${{ matrix.arch }}
 
+      # Publish
+      - run: npm run publish -- --dry-run
+
       - run: rm -rf node_modules
         shell: bash
       - run: tree /a /f
