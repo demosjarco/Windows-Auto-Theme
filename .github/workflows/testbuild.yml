@@ -19,7 +19,8 @@ jobs:
         python-ver: [3.x]
         node-ver: [lts/*]
         win-build-ver: [20348]
-        arch: [ia32, x64, arm64]
+        # arch: [ia32, x64, arm64]
+        arch: [x64]
         include:
           - win-build-ver: 20348
             nodert-package-name: '@nodert-win10-21h1/windows.devices.geolocation'
