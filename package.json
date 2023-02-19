@@ -7,8 +7,8 @@
 	"scripts": {
 		"lint": "eslint --ext .js,.jsx,.json,.yml .",
 		"lint:fix": "eslint --ext .js,.jsx,.json,.yml . --fix",
-		"prettier": "prettier --check **/*.{js,css,json,md}",
-		"prettier:fix": "prettier --write **/*.{js,css,json,md}",
+		"prettier": "prettier --check .",
+		"prettier:fix": "prettier --write .",
 		"format": "npm run prettier",
 		"start": "electron .",
 		"format:fix": "npm run prettier:fix",
