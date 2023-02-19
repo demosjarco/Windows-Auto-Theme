@@ -72,8 +72,9 @@ jobs:
         with:
           result-encoding: string
           script: |
-            const globber = await glob.create('**/WiX Toolset v*/bin');
-            const files = await globber.glob('C:');
+            const patterns = ['**/candle.exe', '**/light.exe']
+            const globber = await glob.create(patterns.join('\n'));
+            const files = await globber.glob('C:\\**\\');
             return JSON.stringify(files);
       - run: echo "${{steps.my-script.outputs.result}}"
       - run: npm run make -- --arch=${{ matrix.arch }} --targets="${{ matrix.makers-module-name }}" --skip-package
