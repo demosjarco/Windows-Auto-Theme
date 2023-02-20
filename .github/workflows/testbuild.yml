@@ -71,9 +71,8 @@ jobs:
         id: my-script
         with:
           script: |
-            const patterns = ['**/candle.exe', '**/light.exe']
-            const globber = await glob.create(patterns.join('\n'));
-            const files = await globber.glob('C:/');
+            const globber = await glob.create('**/*.exe');
+            const files = await globber.glob('C:/Program Files (x86)/');
             console.log(files);
             return files;
       - run: echo "${{steps.my-script.outputs.result}}"
