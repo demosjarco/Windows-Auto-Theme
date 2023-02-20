@@ -26,13 +26,13 @@ jobs:
         include:
           # - makers: "appx"
           #   makers-module-name: '@electron-forge/maker-appx'
-          # - makers: "squirrel"
-          #   makers-module-name: '@electron-forge/maker-squirrel'
+          - makers: "squirrel"
+            makers-module-name: '@electron-forge/maker-squirrel'
           - makers: 'wix'
             makers-module-name: '@electron-forge/maker-wix'
             makers-additional-name: 'electron-wix-msi'
-          # - makers: "zip"
-          #   makers-module-name: '@electron-forge/maker-zip'
+          - makers: "zip"
+            makers-module-name: '@electron-forge/maker-zip'
           - win-build: 20348
             nodert-package-name: '@nodert-win10-21h1/windows.devices.geolocation'
     permissions:
