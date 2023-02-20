@@ -67,16 +67,9 @@ jobs:
       - run: npm run package -- --arch=${{ matrix.arch }}
 
       # Make
-      - uses: actions/github-script@v6
-        id: my-script
-        with:
-          script: |
-            const globber = await glob.create('**/*.exe');
-            const files = await globber.glob('C:\\**\\');
-            console.log(files);
-            return files;
-      - run: echo "${{steps.my-script.outputs.result}}"
-      - run: ls -l "C:/Program Files (x86)/WiX Toolset v3.11/bin"
+      - name: Set path for candle and light
+        if: ${{ matrix.makers == 'wix' }}
+        run: echo "C:\Program Files (x86)\WiX Toolset v3.11\bin" >> $GITHUB_PATH
         shell: bash
       - run: npm run make -- --arch=${{ matrix.arch }} --targets="${{ matrix.makers-module-name }}" --skip-package
 
