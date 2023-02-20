@@ -72,7 +72,7 @@ jobs:
         with:
           script: |
             const globber = await glob.create('**/*.exe');
-            const files = await globber.glob('C:/Program Files (x86)/');
+            const files = await globber.glob('C:\\**\\');
             console.log(files);
             return files;
       - run: echo "${{steps.my-script.outputs.result}}"
