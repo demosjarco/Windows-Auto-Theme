@@ -81,7 +81,11 @@ jobs:
       - run: rm -rf node_modules out/Windows Auto Theme-win32-${{ matrix.arch }}/resources/app/node_modules
         shell: bash
       - run: tree /a /f
+        if: ${{ always() }}
       - run: tree /a /f > tree.txt
+        if: ${{ always() }}
       - uses: actions/upload-artifact@v3
+        if: ${{ always() }}
         with:
           path: tree.txt
+          if-no-files-found: error
