@@ -79,8 +79,6 @@ jobs:
       - run: echo "${{steps.my-script.outputs.result}}"
       - run: ls -l "C:/Program Files (x86)/WiX Toolset v3.11/bin"
         shell: bash
-      - run: ls -l "C:/Program Files/WiX Toolset v3.11/bin"
-        shell: bash
       - run: npm run make -- --arch=${{ matrix.arch }} --targets="${{ matrix.makers-module-name }}" --skip-package
 
       # Publish
