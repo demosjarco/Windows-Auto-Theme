@@ -35,8 +35,8 @@ jobs:
             makers-module-name: '@electron-forge/maker-zip'
           - win-build: 20348
             nodert-package-name: '@nodert-win10-21h1/windows.devices.geolocation'
-    permissions:
-      contents: write
+    # permissions:
+    #   contents: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -74,9 +74,9 @@ jobs:
       - run: npm run make -- --arch=${{ matrix.arch }} --targets="${{ matrix.makers-module-name }}" --skip-package
 
       # Publish
-      # - run: npm run publish -- --dry-run
-      #   env:
-      #     GITHUB_TOKEN: ${{ github.token }}
+      - run: npm run publish -- --dry-run
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - run: rm -rf node_modules out/Windows Auto Theme-win32-${{ matrix.arch }}/resources/app/node_modules
         shell: bash
