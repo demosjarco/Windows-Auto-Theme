@@ -42,7 +42,7 @@
 		"electron-winstaller": "^5.1.0",
 		"electronmon": "^2.0.2",
 		"eslint": "^8.34.0",
-		"eslint-config-prettier": "^8.6.0",
+		"eslint-config-prettier": "^8.7.0",
 		"eslint-plugin-json": "^3.1.0",
 		"eslint-plugin-yml": "^1.5.0",
 		"prettier": "^2.8.4"
