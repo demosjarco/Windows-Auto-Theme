@@ -1,6 +1,6 @@
 /* eslint-disable accessor-pairs */
 module.exports.IP = class {
-	#url = new URL('https://local-ip-geo.demosjarco.dev');
+	#url = new URL('https://local-ip-geo.demosjarco.workers.dev');
 
 	get coordinates() {
 		return new Promise((resolve, reject) => {
