@@ -96,7 +96,7 @@ jobs:
       - uses: microsoft/setup-msbuild@v1.3
         with:
           msbuild-architecture: x64
-      - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.11
+      - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.12
         with:
           sdk-version: ${{ matrix.win-build-ver }}
       # - uses: lukka/get-cmake@v.3.23.2
