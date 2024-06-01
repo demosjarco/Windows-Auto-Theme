@@ -33,7 +33,7 @@
 	"prettier": "@demosjarco/prettier-config",
 	"dependencies": {
 		"cron": "^2.2.0",
-		"dotenv": "^16.0.3",
+		"dotenv": "^16.4.5",
 		"electron-squirrel-startup": "^1.0.0",
 		"electron-store": "^8.1.0",
 		"winreg": "^1.2.5"
