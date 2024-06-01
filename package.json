@@ -30,6 +30,7 @@
 		"url": "https://github.com/demosjarco/Windows-Auto-Theme/issues"
 	},
 	"homepage": "https://github.com/demosjarco/Windows-Auto-Theme#readme",
+	"prettier": "@demosjarco/prettier-config",
 	"dependencies": {
 		"cron": "^2.2.0",
 		"dotenv": "^16.0.3",
@@ -38,6 +39,7 @@
 		"winreg": "^1.2.4"
 	},
 	"devDependencies": {
+		"@demosjarco/prettier-config": "^1.0.1",
 		"@electron-forge/cli": "^6.0.5",
 		"electron": "^23.1.0",
 		"electron-rebuild": "^3.2.9",
