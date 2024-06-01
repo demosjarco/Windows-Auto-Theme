@@ -35,7 +35,7 @@
 		"cron": "^2.2.0",
 		"dotenv": "^16.0.3",
 		"electron-squirrel-startup": "^1.0.0",
-		"electron-store": "^8.1.0",
+		"electron-store": "^9.0.0",
 		"winreg": "^1.2.5"
 	},
 	"devDependencies": {
