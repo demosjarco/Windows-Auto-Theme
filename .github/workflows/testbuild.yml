@@ -50,7 +50,7 @@ jobs:
           node-version: ${{ matrix.node }}
           check-latest: true
           cache: 'npm'
-      - uses: microsoft/setup-msbuild@v1.3
+      - uses: microsoft/setup-msbuild@v2
         with:
           msbuild-architecture: x64
       - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.11
