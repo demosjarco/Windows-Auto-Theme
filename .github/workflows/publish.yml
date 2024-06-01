@@ -32,7 +32,7 @@ jobs:
         with:
           egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: lts/*
@@ -76,7 +76,7 @@ jobs:
       original-commit-sha: ${{ needs.version.outputs.original-commit-sha }}
       version-change-commit-sha: ${{ needs.version.outputs.version-change-commit-sha }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # Pass change commit to force git refresh
           ref: ${{ needs.version.outputs.version-change-commit-sha }}
@@ -155,7 +155,7 @@ jobs:
         with:
           egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # Pass change commit to force git refresh
           ref: ${{ needs.build.outputs.version-change-commit-sha }}
