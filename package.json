@@ -40,7 +40,7 @@
 	},
 	"devDependencies": {
 		"@demosjarco/prettier-config": "^1.0.1",
-		"@electron-forge/cli": "^6.0.5",
+		"@electron-forge/cli": "^7.4.0",
 		"electron": "^23.1.0",
 		"electron-rebuild": "^3.2.9",
 		"electronmon": "^2.0.2",
