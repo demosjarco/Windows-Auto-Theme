@@ -44,7 +44,7 @@ jobs:
           token: ${{ secrets.ACTIONS_TOKEN_RATELIMIT }}
           python-version: ${{ matrix.python }}
           check-latest: true
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           token: ${{ secrets.ACTIONS_TOKEN_RATELIMIT }}
           node-version: ${{ matrix.node }}
