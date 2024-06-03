@@ -117,14 +117,14 @@ jobs:
         run: Compress-Archive -Path '.\builds\packaged\windows-auto-theme-win32-${{ matrix.arch }}' -DestinationPath '.\windows-auto-theme-${{ matrix.arch }}.zip' -CompressionLevel Optimal
         shell: powershell
       - name: Upload compressed ${{ matrix.arch }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: windows-auto-theme-${{ matrix.arch }}.zip
           if-no-files-found: error
       - name: Generate ${{ matrix.type }} for ${{ matrix.arch }} installer
         run: npm run inst:win ${{ matrix.arch }} ${{ matrix.type }}
       - name: Upload ${{ matrix.type }} for ${{ matrix.arch }} installer
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: builds/installers/windows-auto-theme-installer-${{ matrix.arch }}.${{ matrix.type }}
           if-no-files-found: error
@@ -163,7 +163,7 @@ jobs:
           fetch-depth: 0
 
       # Download artifact to publish
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
 
       - name: Generate changelog from commit history
         run: echo "::set-output name=changelog::$(git log --no-decorate $(git describe --tags --abbrev=0)..HEAD --oneline)"
