@@ -95,7 +95,7 @@ jobs:
           vs-version: ${{ matrix.vs-build-ver }}
           # https://github.com/microsoft/setup-msbuild/blob/master/action.yml#L18 Only available in 17.0+
           msbuild-architecture: ${{ matrix.vs-build-arch }}
-      - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.11
+      - uses: GuillaumeFalourd/setup-windows10-sdk-action@v2.1
         with:
           sdk-version: ${{ matrix.win-target-build-ver }}
       # - uses: lukka/get-cmake@v.3.23.2
